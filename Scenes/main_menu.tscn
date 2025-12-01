@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://2yvq6yiiep7y"]
+
+[ext_resource type="PackedScene" uid="uid://hyluobb8xg14" path="res://assets/Prefab_kinda/control.tscn" id="1_1nw7i"]
+
+[node name="Main_Menu" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" parent="CanvasLayer/UI" instance=ExtResource("1_1nw7i")]
+layout_mode = 1
