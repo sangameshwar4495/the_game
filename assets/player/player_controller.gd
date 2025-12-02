@@ -87,10 +87,17 @@ var stamina_recharge_delay = 0.0
 var stamina_recharge_cooldown = 0.56
 
 var glide_stamina_drain := 8.0
-var wall_jump_stamina_cost := 7.0
+var wall_jump_stamina_cost := 12.0
 var stamina_recovery_rate := 10.0
 
 var current_spawn: Vector2
+
+func sign_nonzero(x: float) -> int:
+	if x > 0: return 1
+	if x < 0: return -1
+	if rotatable and rotatable.scale.x != 0:
+		return int(sign(rotatable.scale.x))
+	return 1
 
 func _ready():
 	current_spawn = spawn.global_position
@@ -100,9 +107,7 @@ func _ready():
 
 func _physics_process(delta):
 	get_input_axis()
-	
 	glide_delay = max(glide_delay - delta, 0.0)
-	
 	apply_gravity(delta)
 	check_wall()
 	handle_floor_and_coyote(delta)
@@ -123,12 +128,11 @@ func _physics_process(delta):
 	update_ambient(delta)
 	update_cape(delta)
 	apply_debug_rotation()
-	
+
 func update_stamina(delta):
 	if is_gliding:
 		stamina -= glide_stamina_drain * delta
 		stamina_recharge_delay = stamina_recharge_cooldown
-
 	elif is_on_floor() or (on_wall and vel.y > 0):
 		if stamina_recharge_delay > 0.0:
 			stamina_recharge_delay -= delta
@@ -139,7 +143,6 @@ func update_stamina(delta):
 
 func get_input_axis():
 	axis.x = float(Input.is_action_pressed("right")) - float(Input.is_action_pressed("left"))
-	axis.y = 0
 	if axis.length() > 1:
 		axis = axis.normalized()
 
@@ -161,7 +164,7 @@ func apply_gravity(delta):
 			vel.y += GRAVITY * delta
 	else:
 		var clip = MAX_FALL_SPEED
-		var can_glide = glide_delay <= 0.0 
+		var can_glide = glide_delay <= 0.0
 		if can_glide and Input.is_action_pressed("jump") and vel.y > GLIDE_CLIP_VEL and stamina > 0.0:
 			clip = GLIDE_VELOCITY
 			is_gliding = true
@@ -227,7 +230,8 @@ func horizontal_movement(delta):
 			vel.x = move_toward(vel.x, t, ACCELERATION * delta * 2.0)
 		else:
 			vel.x = move_toward(vel.x, t, ACCELERATION * delta)
-		rotatable.scale.x = sign(axis.x)
+
+		rotatable.scale.x = sign_nonzero(axis.x)
 	else:
 		vel.x = move_toward(vel.x, 0, ACCELERATION * delta * 0.7)
 
@@ -244,6 +248,7 @@ func do_jump():
 func do_wall_jump():
 	if stamina <= 0.0:
 		return
+
 	glide_delay = glide_delay_time
 	stamina -= wall_jump_stamina_cost
 	stamina_recharge_delay = stamina_recharge_cooldown
@@ -251,7 +256,7 @@ func do_wall_jump():
 
 	audio.stream = wall_jump_audio_stream
 	audio.play()
-	
+
 	var d = int(sign(axis.x))
 	var p = WALL_JUMP_PUSH
 
@@ -265,14 +270,13 @@ func do_wall_jump():
 	wall_jump_lock = WALL_JUMP_CONTROL_LOCK
 
 	if d == 0:
-		rotatable.scale.x = -sign(rotatable.scale.x)
+		rotatable.scale.x = -sign_nonzero(rotatable.scale.x)
 	else:
-		rotatable.scale.x = -wall_dir
-
+		rotatable.scale.x = -sign_nonzero(wall_dir)
 
 func update_state_and_flip():
 	if on_wall:
-		rotatable.scale.x = -wall_dir
+		rotatable.scale.x = -sign_nonzero(wall_dir)
 
 func update_ambient(delta):
 	update_blink(delta)
@@ -326,7 +330,6 @@ func update_antennas(delta):
 			st = "glide" if is_gliding else "fall"
 	elif abs(vel.x) > RUN_THRESHOLD:
 		st = "run"
-
 
 	var t1 = 0.0
 	var t2 = 0.0
@@ -410,21 +413,20 @@ func apply_debug_rotation():
 		t = -deg_to_rad(5) * axis.x
 	rotatable.rotation = lerp(rotatable.rotation, t, 0.7)
 
-# For external scripts to access
 func add_stamina(amount: float) -> void:
 	stamina = clamp(stamina + amount, 0.0, max_stamina)
 
 func set_stamina_max(value: float) -> void:
 	max_stamina = max(value, 0.0)
 	stamina = clamp(stamina, 0.0, max_stamina)
-	
+
 func set_respawn(checkpoint_:Vector2):
 	current_spawn = checkpoint_
-	
+
 func distance_to_spawn():
 	var displacement_vector = current_spawn - $".".global_position 
-	var distance = (displacement_vector.x ** 2 + displacement_vector.y ** 2)**0.5
-	return distance
+	return displacement_vector.length()
+
 func die():
 	$".".global_position = current_spawn
 	var time : float
@@ -432,5 +434,3 @@ func die():
 		get_tree().paused = true
 		await get_tree().create_timer(time).timeout
 		get_tree().paused = false
-	else:
-		pass
