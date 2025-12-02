@@ -8,3 +8,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		body.set_respawn(checkpoint.global_position)
 		animation_player.play("Fade_In")
+		await get_tree().create_timer(2).timeout
+		queue_free()

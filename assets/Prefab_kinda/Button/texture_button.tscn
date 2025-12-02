@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8xc7a7j6c3b5"]
+
+[ext_resource type="Script" uid="uid://dt2pdvru2ne7q" path="res://assets/Prefab_kinda/Button/texture_button.gd" id="1_lftdj"]
+[ext_resource type="FontFile" uid="uid://blil4ytliy3fu" path="res://assets/Prefab_kinda/editundo.ttf" id="1_vov2r"]
+[ext_resource type="Texture2D" uid="uid://2sokdip2j8cg" path="res://assets/Prefab_kinda/Button/alternate.png" id="3_5re12"]
+
+[node name="TextureButton" type="TextureButton"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 40)
+offset_right = 158.0
+offset_bottom = 40.0
+size_flags_stretch_ratio = 0.0
+script = ExtResource("1_lftdj")
+
+[node name="Text" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -15.0
+offset_right = 34.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_vov2r")
+theme_override_fonts/bold_font = ExtResource("1_vov2r")
+theme_override_fonts/bold_italics_font = ExtResource("1_vov2r")
+theme_override_font_sizes/normal_font_size = 27
+bbcode_enabled = true
+text = "[center]START[/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Right" type="Sprite2D" parent="."]
+position = Vector2(116, 16)
+rotation = -1.5707964
+texture = ExtResource("3_5re12")
+
+[node name="Left" type="Sprite2D" parent="."]
+position = Vector2(25, 16)
+rotation = 1.5707964
+texture = ExtResource("3_5re12")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
