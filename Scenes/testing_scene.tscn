@@ -1,26 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://c6v2auxiy7ca0"]
 
 [ext_resource type="PackedScene" uid="uid://q1d7iycpesjo" path="res://assets/Prefab_kinda/controlPause.tscn" id="1_ybjcv"]
-[ext_resource type="Script" uid="uid://bhdwfypnqwea1" path="res://assets/player/player_controller.gd" id="2_s6pog"]
+[ext_resource type="PackedScene" uid="uid://dprho8jmoqejn" path="res://assets/player/player.tscn" id="2_ybjcv"]
 [ext_resource type="Texture2D" uid="uid://d24emgns8mtm2" path="res://assets/sprites/white.png" id="3_8xidb"]
+[ext_resource type="Script" uid="uid://dm6iobhc3btjl" path="res://assets/camera/camera_follow.gd" id="3_s6pog"]
+[ext_resource type="Texture2D" uid="uid://bvcne3n84m38f" path="res://assets/sprites/arrow.png" id="5_8xidb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tmfp"]
-size = Vector2(32, 56)
-
-[sub_resource type="GDScript" id="GDScript_ybjcv"]
-script/source = "extends Node
-
-
-func _ready() -> void:
-	pass 
-
-func _process(delta: float) -> void:
-	var eye1 = $\"./Rotatable/eye1\"
-	pass
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j6xku"]
-size = Vector2(512, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybjcv"]
+size = Vector2(32, 32)
 
 [node name="Node2D" type="Node2D"]
 
@@ -28,159 +15,138 @@ size = Vector2(512, 32)
 
 [node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("1_ybjcv")]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(0, 1)
-script = ExtResource("2_s6pog")
-
-[node name="BoundingBox" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_7tmfp")
-debug_color = Color(1.540184e-06, 0.6406053, 0.3520957, 0.41960785)
-
-[node name="Rotatable" type="Node2D" parent="Player"]
-
-[node name="Antena1" type="Node2D" parent="Player/Rotatable"]
-position = Vector2(-7, -25)
-
-[node name="base" type="Sprite2D" parent="Player/Rotatable/Antena1"]
-modulate = Color(0.11858138, 0.11858138, 0.11858138, 1)
-position = Vector2(-1.000001, -11)
-rotation = -0.22478293
-scale = Vector2(0.16000092, 0.6078811)
-texture = ExtResource("3_8xidb")
-
-[node name="bob" type="Sprite2D" parent="Player/Rotatable/Antena1"]
-modulate = Color(0.11858138, 0.11858138, 0.11858138, 1)
-position = Vector2(-4.9312773, -18.03883)
-rotation = -0.40934804
-scale = Vector2(0.3038461, 0.25670004)
-texture = ExtResource("3_8xidb")
-
-[node name="Antena2" type="Node2D" parent="Player/Rotatable"]
-position = Vector2(7, -24)
-
-[node name="bob" type="Sprite2D" parent="Player/Rotatable/Antena2"]
-modulate = Color(0.11858138, 0.11858138, 0.11858138, 1)
-position = Vector2(5.999999, -19.999996)
-rotation = 0.19009504
-scale = Vector2(0.30384612, 0.2567)
-texture = ExtResource("3_8xidb")
-
-[node name="base" type="Sprite2D" parent="Player/Rotatable/Antena2"]
-modulate = Color(0.11858138, 0.11858138, 0.11858138, 1)
-position = Vector2(2, -12.000004)
-rotation = 0.19530201
-scale = Vector2(0.16000092, 0.6078811)
-texture = ExtResource("3_8xidb")
-
-[node name="Body" type="Sprite2D" parent="Player/Rotatable"]
-modulate = Color(0.11858138, 0.11858138, 0.11858138, 1)
-scale = Vector2(1, 1.75)
-texture = ExtResource("3_8xidb")
-
-[node name="Eye1" type="Node2D" parent="Player/Rotatable"]
-position = Vector2(-6, -17)
-
-[node name="bal" type="Sprite2D" parent="Player/Rotatable/Eye1"]
-modulate = Color(0.9844983, 0.960059, 0.9895049, 1)
-position = Vector2(16, -1.9073486e-06)
-scale = Vector2(0.3284411, 0.27979296)
-texture = ExtResource("3_8xidb")
-
-[node name="Eye2" type="Node2D" parent="Player/Rotatable"]
-position = Vector2(10, -17)
-
-[node name="ball" type="Sprite2D" parent="Player/Rotatable/Eye2"]
-modulate = Color(0.9844983, 0.960059, 0.9895049, 1)
-position = Vector2(-15.999999, -1.9073486e-06)
-scale = Vector2(0.3284411, 0.27979296)
-texture = ExtResource("3_8xidb")
-
-[node name="Animator" type="Node2D" parent="Player"]
-script = SubResource("GDScript_ybjcv")
+[node name="Player" parent="." instance=ExtResource("2_ybjcv")]
+position = Vector2(-238, -268)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_s6pog")
 
 [node name="Level_Geom" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom"]
-position = Vector2(0, 235)
+[node name="Block2" type="Node2D" parent="Level_Geom"]
+position = Vector2(-715, 22.000002)
+scale = Vector2(26.567785, 39.787445)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/StaticBody2D"]
-shape = SubResource("RectangleShape2D_j6xku")
-
-[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/StaticBody2D"]
-modulate = Color(0.17645466, 0.63657224, 0.661204, 1)
-scale = Vector2(16, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block2"]
+modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
 texture = ExtResource("3_8xidb")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Level_Geom"]
-position = Vector2(-291, -165)
+[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block2/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ybjcv")
+
+[node name="Block3" type="Node2D" parent="Level_Geom"]
+position = Vector2(713, -576)
+scale = Vector2(54.133057, 25.337639)
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block3"]
+modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+texture = ExtResource("3_8xidb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block3/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ybjcv")
+
+[node name="Block7" type="Node2D" parent="Level_Geom"]
+position = Vector2(-279, -759)
+scale = Vector2(54.133057, 25.337639)
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block7"]
+modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+texture = ExtResource("3_8xidb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block7/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ybjcv")
+
+[node name="Block4" type="Node2D" parent="Level_Geom"]
+position = Vector2(2181, 534.00006)
 rotation = 1.5707964
+scale = Vector2(138.33307, 38.897644)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/StaticBody2D2"]
-shape = SubResource("RectangleShape2D_j6xku")
-
-[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/StaticBody2D2"]
-modulate = Color(0.17645466, 0.63657224, 0.661204, 1)
-scale = Vector2(16, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block4"]
+modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
 texture = ExtResource("3_8xidb")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Level_Geom"]
-position = Vector2(-177, -217)
+[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block4/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ybjcv")
+
+[node name="Block5" type="Node2D" parent="Level_Geom"]
+position = Vector2(92, 1078)
 rotation = 1.5707964
+scale = Vector2(54.133057, 80.33764)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/StaticBody2D3"]
-shape = SubResource("RectangleShape2D_j6xku")
-
-[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/StaticBody2D3"]
-modulate = Color(0.17645466, 0.63657224, 0.661204, 1)
-scale = Vector2(16, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block5"]
+modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
 texture = ExtResource("3_8xidb")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="Level_Geom"]
-position = Vector2(-285, 157)
-scale = Vector2(0.72029084, 1.7041297)
+[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block5"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/StaticBody2D4"]
-shape = SubResource("RectangleShape2D_j6xku")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block5/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ybjcv")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/StaticBody2D4"]
-modulate = Color(0.17645466, 0.63657224, 0.661204, 1)
-scale = Vector2(16, 1)
+[node name="Block6" type="Node2D" parent="Level_Geom"]
+position = Vector2(72, 3063)
+rotation = 1.5707964
+scale = Vector2(54.133057, 80.33764)
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block6"]
+modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
 texture = ExtResource("3_8xidb")
 
-[node name="StaticBody2D5" type="StaticBody2D" parent="Level_Geom"]
-position = Vector2(292, 169)
-scale = Vector2(1.0248448, 1.8887415)
+[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block6"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/StaticBody2D5"]
-shape = SubResource("RectangleShape2D_j6xku")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block6/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ybjcv")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/StaticBody2D5"]
-modulate = Color(0.17645466, 0.63657224, 0.661204, 1)
-scale = Vector2(16, 1)
+[node name="Block10" type="Node2D" parent="Level_Geom"]
+position = Vector2(2211, 3443)
+rotation = 1.5707964
+scale = Vector2(54.133057, 80.33764)
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block10"]
+modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
 texture = ExtResource("3_8xidb")
 
-[node name="StaticBody2D8" type="StaticBody2D" parent="Level_Geom"]
-position = Vector2(546, 84)
-scale = Vector2(1.0248448, 1.8887415)
+[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block10"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/StaticBody2D8"]
-shape = SubResource("RectangleShape2D_j6xku")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block10/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ybjcv")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/StaticBody2D8"]
-modulate = Color(0.17645466, 0.63657224, 0.661204, 1)
-scale = Vector2(16, 1)
+[node name="Block8" type="Node2D" parent="Level_Geom"]
+position = Vector2(453.99997, 269.00006)
+rotation = 3.1415927
+scale = Vector2(-5.8866844, 6.8001623)
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block8"]
+modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
 texture = ExtResource("3_8xidb")
 
-[node name="StaticBody2D6" type="StaticBody2D" parent="Level_Geom"]
-position = Vector2(162, -17)
-scale = Vector2(0.28000075, 1)
+[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block8"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/StaticBody2D6"]
-shape = SubResource("RectangleShape2D_j6xku")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block8/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ybjcv")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/StaticBody2D6"]
-modulate = Color(0.17645466, 0.63657224, 0.661204, 1)
-scale = Vector2(16, 1)
+[node name="Block9" type="Node2D" parent="Level_Geom"]
+position = Vector2(837, 274)
+rotation = 3.1415927
+scale = Vector2(-5.8866844, 12.120162)
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block9"]
+modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
 texture = ExtResource("3_8xidb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block9/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ybjcv")
+
+[node name="Arrow" type="Sprite2D" parent="Level_Geom"]
+texture_filter = 1
+position = Vector2(1461, 92)
+texture = ExtResource("5_8xidb")

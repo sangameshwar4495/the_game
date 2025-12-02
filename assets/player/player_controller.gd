@@ -11,7 +11,6 @@ const GLIDE_VELOCITY = 110.0
 const GLIDE_CLIP_VEL = 100.0
 
 const ACCELERATION = 7200.0
-
 const JUMP_VELOCITY = -690.0
 const MIN_JUMP_VELOCITY = -500.0
 
@@ -28,11 +27,10 @@ const WALL_COYOTE_TIME = 0.11
 @onready var antenna2 = $Rotatable/Antena2
 @onready var eye1 = $Rotatable/Eye1
 @onready var eye2 = $Rotatable/Eye2
+@onready var cape = $Rotatable/Cape
 
-# ------------------------
-# MOVEMENT STATE
-var vel: Vector2 = Vector2.ZERO
-var axis: Vector2 = Vector2.ZERO
+var vel := Vector2.ZERO
+var axis := Vector2.ZERO
 
 var coyote_timer = 0.0
 var wall_coyote_timer = 0.0
@@ -40,7 +38,6 @@ var jump_buffer_timer = 0.0
 
 var can_jump = false
 var airborne_friction = false
-
 var is_shielding = false
 
 var on_wall = false
@@ -49,15 +46,13 @@ var last_wall_dir = 0
 var wall_jump_lock = 0.0
 var is_gliding = false
 
-# ------------------------
-# ANIMATION / AMBIENT
 var anim_time = 0.0
 
 var blink_timer = 0.0
 var next_blink = 0.0
 const BLINK_MIN_INTERVAL = 1.0
 const BLINK_MAX_INTERVAL = 4.0
-const BLINK_DURATION = 0.14 
+const BLINK_DURATION = 0.14
 var blink_anim_t = -1.0
 
 var anten1_rot = 0.0
@@ -69,16 +64,18 @@ const ANT_RUN_FREQ = 8.0
 const ANT_RUN_AMP = 0.35
 const ANT_FALL_FREQ = 20.0
 const ANT_FALL_AMP = 0.5
-const ANT_JUMP_TILT = -0.28 
-const ANT_WALL_TILT = 0.45 
-
-var target_tilt = 0.0
+const ANT_JUMP_TILT = -0.28
+const ANT_WALL_TILT = 0.45
 
 const RUN_THRESHOLD = 20.0
 
+var cape_rot = 0.0
+var cape_swing = 0.0
+var cape_flap = 0.0
+
 func _ready():
 	randomize()
-	_schedule_next_blink()
+	schedule_next_blink()
 
 func _physics_process(delta):
 	get_input_axis()
@@ -98,6 +95,7 @@ func _physics_process(delta):
 	anim_time += delta
 	update_state_and_flip()
 	update_ambient(delta)
+	update_cape(delta)
 	apply_debug_rotation()
 
 func get_input_axis():
@@ -123,15 +121,15 @@ func apply_gravity(delta):
 		else:
 			vel.y += GRAVITY * delta
 	else:
-		var fall_clip = MAX_FALL_SPEED
+		var clip = MAX_FALL_SPEED
 		if Input.is_action_pressed("jump") and vel.y > GLIDE_CLIP_VEL:
-			fall_clip = GLIDE_VELOCITY
+			clip = GLIDE_VELOCITY
 			is_gliding = true
 		else:
 			is_gliding = false
 
 		vel.y += GRAVITY * EXTRA_FALL_GRAVITY * delta
-		vel.y = min(vel.y, fall_clip)
+		vel.y = min(vel.y, clip)
 
 func handle_floor_and_coyote(delta):
 	if is_on_floor():
@@ -158,10 +156,10 @@ func handle_jump_input(delta):
 
 	if jump_buffer_timer > 0.0:
 		if can_jump:
-			_do_jump()
+			do_jump()
 			jump_buffer_timer = 0.0
 		elif on_wall or wall_coyote_timer < WALL_COYOTE_TIME:
-			_do_wall_jump()
+			do_wall_jump()
 			jump_buffer_timer = 0.0
 
 func handle_wall_slide():
@@ -184,11 +182,11 @@ func horizontal_movement(delta):
 		return
 
 	if axis.x != 0:
-		var target = axis.x * MAX_SPEED
+		var t = axis.x * MAX_SPEED
 		if sign(vel.x) != axis.x:
-			vel.x = move_toward(vel.x, target, ACCELERATION * delta * 2.0)
+			vel.x = move_toward(vel.x, t, ACCELERATION * delta * 2.0)
 		else:
-			vel.x = move_toward(vel.x, target, ACCELERATION * delta)
+			vel.x = move_toward(vel.x, t, ACCELERATION * delta)
 		rotatable.scale.x = sign(axis.x)
 	else:
 		vel.x = move_toward(vel.x, 0, ACCELERATION * delta * 0.7)
@@ -201,18 +199,19 @@ func do_jump():
 	can_jump = false
 
 func do_wall_jump():
-	var input_dir = int(sign(axis.x))
-	var push = WALL_JUMP_PUSH
-	if input_dir != 0 and input_dir == -wall_dir:
-		push *= 1.45
+	var d = int(sign(axis.x))
+	var p = WALL_JUMP_PUSH
+
+	if d != 0 and d == -wall_dir:
+		p *= 1.45
 	else:
-		push *= 3.0
+		p *= 3.0
 
 	vel.y = WALL_JUMP_VELOCITY
-	vel.x = wall_dir * push
+	vel.x = wall_dir * p
 	wall_jump_lock = WALL_JUMP_CONTROL_LOCK
 
-	if input_dir == 0:
+	if d == 0:
 		rotatable.scale.x = -sign(rotatable.scale.x)
 	else:
 		rotatable.scale.x = -wall_dir
@@ -241,89 +240,117 @@ func update_blink(delta):
 		else:
 			if p < 0.5:
 				var t = p * 2.0
-				var s = lerp(1.0, 0.06, ease_out_quad(t))
+				var s = lerp(1.0, 0.06, t * (2.0 - t))
 				set_eye_scale_y(s)
 			else:
 				var t2 = (p - 0.5) * 2.0
-				var s2 = lerp(0.06, 1.0, ease_in_quad(t2))
+				var s2 = lerp(0.06, 1.0, t2 * t2)
 				set_eye_scale_y(s2)
 
 func schedule_next_blink():
 	next_blink = randf_range(BLINK_MIN_INTERVAL, BLINK_MAX_INTERVAL)
 	blink_timer = 0.0
 
-func set_eye_scale_y(val):
+func set_eye_scale_y(v):
 	if eye1:
-		var sc = eye1.scale
-		sc.y = val
-		eye1.scale = sc
+		var s = eye1.scale
+		s.y = v
+		eye1.scale = s
 	if eye2:
-		var sc2 = eye2.scale
-		sc2.y = val
-		eye2.scale = sc2
+		var s = eye2.scale
+		s.y = v
+		eye2.scale = s
 
 func update_antennas(delta):
-	var state = "idle"
+	var st = "idle"
 	if on_wall:
-		state = "wall"
+		st = "wall"
 	elif not is_on_floor():
 		if vel.y < 0:
-			state = "jump"
+			st = "jump"
 		else:
-			if is_gliding:
-				state = "glide"
-			else:
-				state = "fall"
+			st = "glide" if is_gliding else "fall"
 	elif abs(vel.x) > RUN_THRESHOLD:
-		state = "run"
-	else:
-		state = "idle"
+		st = "run"
 
-	var a1_target = 0.0
-	var a2_target = 0.0
+	var t1 = 0.0
+	var t2 = 0.0
 
-	match state:
+	match st:
 		"idle":
-			a1_target = sin(anim_time * ANT_IDLE_FREQ) * ANT_IDLE_AMP * 0.8
-			a2_target = sin((anim_time + 0.7) * ANT_IDLE_FREQ) * ANT_IDLE_AMP * 0.9
+			t1 = sin(anim_time * ANT_IDLE_FREQ) * ANT_IDLE_AMP * 0.8
+			t2 = sin(anim_time * ANT_IDLE_FREQ + 0.7) * ANT_IDLE_AMP * 0.9
 		"run":
-			a1_target = sin(anim_time * ANT_RUN_FREQ) * ANT_RUN_AMP
-			a2_target = sin((anim_time + 0.4) * ANT_RUN_FREQ) * ANT_RUN_AMP * 0.9
+			t1 = sin(anim_time * ANT_RUN_FREQ) * ANT_RUN_AMP
+			t2 = sin(anim_time * ANT_RUN_FREQ + 0.4) * ANT_RUN_AMP * 0.9
 		"jump":
-			# tilt backwards with small oscillation
-			a1_target = ANT_JUMP_TILT + sin(anim_time * 10.0) * 0.06
-			a2_target = ANT_JUMP_TILT + sin((anim_time + 0.5) * 10.0) * 0.05
+			t1 = ANT_JUMP_TILT + sin(anim_time * 10.0) * 0.06
+			t2 = ANT_JUMP_TILT + sin(anim_time * 10.0 + 0.5) * 0.05
 		"fall":
-			# flutter while falling
-			a1_target = sin(anim_time * ANT_FALL_FREQ) * ANT_FALL_AMP
-			a2_target = sin((anim_time + 0.25) * ANT_FALL_FREQ) * ANT_FALL_AMP * 0.85
+			t1 = sin(anim_time * ANT_FALL_FREQ) * ANT_FALL_AMP
+			t2 = sin(anim_time * ANT_FALL_FREQ + 0.25) * ANT_FALL_AMP * 0.85
 		"glide":
-			# relaxed small swing while gliding
-			a1_target = sin(anim_time * 3.0) * (ANT_IDLE_AMP * 0.6)
-			a2_target = sin((anim_time + 0.6) * 3.0) * (ANT_IDLE_AMP * 0.6)
+			t1 = sin(anim_time * 3.0) * ANT_IDLE_AMP * 0.6
+			t2 = sin(anim_time * 3.0 + 0.6) * ANT_IDLE_AMP * 0.6
 		"wall":
-			var tilt = -ANT_WALL_TILT
-			a1_target = tilt + sin(anim_time * 4.0) * 0.08
-			a2_target = tilt + sin((anim_time + 0.3) * 4.0) * 0.06
+			var tt = -ANT_WALL_TILT
+			t1 = tt + sin(anim_time * 4.0) * 0.08
+			t2 = tt + sin(anim_time * 4.0 + 0.3) * 0.06
 
-	# smooth towards target rotations
-	var smooth_speed = 12.0
-	anten1_rot = lerp_angle(anten1_rot, a1_target, clamp(smooth_speed * delta, 0.0, 1.0))
-	anten2_rot = lerp_angle(anten2_rot, a2_target, clamp(smooth_speed * delta, 0.0, 1.0))
+	var sp = clamp(12.0 * delta, 0.0, 1.0)
+	anten1_rot = lerp_angle(anten1_rot, t1, sp)
+	anten2_rot = lerp_angle(anten2_rot, t2, sp)
 
 	if antenna1:
 		antenna1.rotation = anten1_rot
 	if antenna2:
 		antenna2.rotation = anten2_rot
 
+func update_cape(delta):
+	var st = "idle"
+	if on_wall:
+		st = "wall"
+	elif not is_on_floor():
+		if vel.y < 0:
+			st = "jump"
+		else:
+			st = "glide" if is_gliding else "fall"
+	elif abs(vel.x) > RUN_THRESHOLD:
+		st = "run"
+
+	var base = 0.0
+	var swing = 0.0
+	var flap = 0.0
+
+	match st:
+		"idle":
+			swing = sin(anim_time * 1.4) * 0.08
+		"run":
+			swing = sin(anim_time * 10.0) * 0.22
+			flap = sin(anim_time * 26.0) * 0.05
+		"jump":
+			base = -0.10
+			swing = sin(anim_time * 4.0) * 0.10
+		"fall":
+			base = 0.35
+			swing = sin(anim_time * 14.0) * 0.18
+			flap = sin(anim_time * 24.0) * 0.10
+		"glide":
+			base = 0.75
+			swing = sin(anim_time * 3.0) * 0.10
+		"wall":
+			base = -0.45
+			swing = sin(anim_time * 5.0) * 0.05
+
+	var target = base + swing + flap
+	var sp = clamp(10.0 * delta, 0.0, 1.0)
+	cape_rot = lerp_angle(cape_rot, target, sp)
+
+	if cape:
+		cape.rotation = cape_rot
+
 func apply_debug_rotation():
 	var t = 0.0
 	if axis.x != 0 and abs(vel.x) > 0.01:
 		t = -deg_to_rad(5) * axis.x
 	rotatable.rotation = lerp(rotatable.rotation, t, 0.7)
-
-func ease_in_quad(t):
-	return t * t
-
-func ease_out_quad(t):
-	return t * (2.0 - t)
