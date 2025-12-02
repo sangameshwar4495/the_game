@@ -90,7 +90,10 @@ var glide_stamina_drain := 18.0
 var wall_jump_stamina_cost := 12.0
 var stamina_recovery_rate := 10.0
 
+var current_spawn: Vector2
+
 func _ready():
+	current_spawn = spawn.global_position
 	add_to_group("player")
 	randomize()
 	schedule_next_blink()
@@ -414,9 +417,20 @@ func add_stamina(amount: float) -> void:
 func set_stamina_max(value: float) -> void:
 	max_stamina = max(value, 0.0)
 	stamina = clamp(stamina, 0.0, max_stamina)
-
+	
+func set_respawn(checkpoint_:Vector2):
+	current_spawn = checkpoint_
+	
+func distance_to_spawn():
+	var displacement_vector = current_spawn - $".".global_position 
+	var distance = (displacement_vector.x ** 2 + displacement_vector.y ** 2)**0.5
+	return distance
 func die():
-	$".".global_position = spawn.global_position
-	get_tree().paused = true
-	await get_tree().create_timer(0.8).timeout
-	get_tree().paused = false
+	$".".global_position = current_spawn
+	var time : float
+	if distance_to_spawn() > 15:
+		get_tree().paused = true
+		await get_tree().create_timer(time).timeout
+		get_tree().paused = false
+	else:
+		pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c6v2auxiy7ca0"]
+[gd_scene load_steps=14 format=3 uid="uid://c6v2auxiy7ca0"]
 
 [ext_resource type="PackedScene" uid="uid://q1d7iycpesjo" path="res://assets/Prefab_kinda/controlPause.tscn" id="1_ybjcv"]
 [ext_resource type="PackedScene" uid="uid://dprho8jmoqejn" path="res://assets/player/player.tscn" id="2_ybjcv"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bsk1bmbq5bf8x" path="res://assets/worker_ant/worker_ant.tscn" id="6_lv8lt"]
 [ext_resource type="FontFile" uid="uid://de2oe4cfumvi2" path="res://assets/fonts/monogram.ttf" id="6_mhjv0"]
 [ext_resource type="Script" uid="uid://bo5d28h7vwjfn" path="res://assets/tutorial/tut_dialog.gd" id="7_ulum1"]
+[ext_resource type="PackedScene" uid="uid://cvku1me4whylh" path="res://assets/level_prefabs/Checkpoint/checkpoint.tscn" id="10_66ky8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ybjcv"]
 size = Vector2(32, 32)
@@ -30,7 +31,7 @@ position = Vector2(-238, -268)
 [node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("1_ybjcv")]
 
 [node name="Player" parent="." instance=ExtResource("2_ybjcv")]
-position = Vector2(592, 1795)
+position = Vector2(-231, -261)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
@@ -369,3 +370,9 @@ position = Vector2(1333, 1755)
 [node name="Sprite2D" type="Sprite2D" parent="Pollen"]
 modulate = Color(0.9098039, 0.6666667, 0.1882353, 1)
 texture = ExtResource("3_8xidb")
+
+[node name="Checkpoint_2" parent="." instance=ExtResource("10_66ky8")]
+position = Vector2(-119, 1766)
+
+[node name="Checkpoint_1" parent="." instance=ExtResource("10_66ky8")]
+position = Vector2(1172, 1762)

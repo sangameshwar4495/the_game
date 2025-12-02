@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvku1me4whylh"]
+
+[ext_resource type="Script" uid="uid://b7li1dxeb3l43" path="res://assets/level_prefabs/Checkpoint/checkpoint.gd" id="1_d4sv7"]
+
+[sub_resource type="Animation" id="Animation_d4sv7"]
+resource_name = "Fade_In"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.7529412), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1ebib"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eoybk"]
+_data = {
+&"Fade_In": SubResource("Animation_d4sv7"),
+&"RESET": SubResource("Animation_1ebib")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqx51"]
+size = Vector2(27, 94)
+
+[node name="Checkpoint" type="Node2D"]
+script = ExtResource("1_d4sv7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -9.0
+offset_right = 6.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_eoybk")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 37)
+shape = SubResource("RectangleShape2D_aqx51")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
