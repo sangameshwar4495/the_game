@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dm6iobhc3btjl" path="res://assets/camera/camera_follow.gd" id="3_s6pog"]
 [ext_resource type="Texture2D" uid="uid://bvcne3n84m38f" path="res://assets/sprites/arrow.png" id="5_8xidb"]
 [ext_resource type="PackedScene" uid="uid://bk3mvo1ti5trv" path="res://assets/level_prefabs/spike/spike.tscn" id="5_j7rnq"]
-[ext_resource type="PackedScene" uid="uid://4sf03s5f00cc" path="res://assets/level_prefabs/spike/killzone.tscn" id="6_lv8lt"]
+[ext_resource type="PackedScene" uid="uid://bsk1bmbq5bf8x" path="res://assets/worker_ant/worker_ant.tscn" id="6_lv8lt"]
 [ext_resource type="FontFile" uid="uid://de2oe4cfumvi2" path="res://assets/fonts/monogram.ttf" id="6_mhjv0"]
 [ext_resource type="Script" uid="uid://bo5d28h7vwjfn" path="res://assets/tutorial/tut_dialog.gd" id="7_ulum1"]
 
@@ -30,7 +30,7 @@ position = Vector2(-238, -268)
 [node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("1_ybjcv")]
 
 [node name="Player" parent="." instance=ExtResource("2_ybjcv")]
-position = Vector2(-238, -268)
+position = Vector2(592, 1795)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
@@ -200,29 +200,37 @@ texture = ExtResource("3_8xidb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block12/StaticBody2D"]
 shape = SubResource("RectangleShape2D_ybjcv")
 
-[node name="Spike" parent="Level_Geom" instance=ExtResource("5_j7rnq")]
-position = Vector2(1035, 1936)
-script = null
+[node name="Block13" type="Node2D" parent="Level_Geom"]
+z_index = 2
+position = Vector2(-115.99994, 2096.9998)
+rotation = 3.1415927
+scale = Vector2(-3.3179042, 15.604986)
 
-[node name="Killzone" parent="Level_Geom/Spike" node_paths=PackedStringArray("player") instance=ExtResource("6_lv8lt")]
-position = Vector2(4, -12)
-player = NodePath("../../../Player")
+[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block13"]
+modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+texture = ExtResource("3_8xidb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block13"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block13/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ybjcv")
 
 [node name="Spike2" parent="Level_Geom" instance=ExtResource("5_j7rnq")]
-position = Vector2(755, 1936)
-script = null
+position = Vector2(760, 1936)
 
-[node name="Killzone2" parent="Level_Geom/Spike2" node_paths=PackedStringArray("player") instance=ExtResource("6_lv8lt")]
-position = Vector2(4, -11)
-player = NodePath("../../../Player")
+[node name="Spike3" parent="Level_Geom" instance=ExtResource("5_j7rnq")]
+position = Vector2(1037, 1936)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Worker_Ant" parent="Level_Geom" instance=ExtResource("6_lv8lt")]
+position = Vector2(123, 1901)
 
-[node name="Tutorial" type="Node2D" parent="Node2D"]
+[node name="Tutrial" type="Node2D" parent="."]
+
+[node name="Tutorial" type="Node2D" parent="Tutrial"]
 position = Vector2(181, 184)
 script = ExtResource("7_ulum1")
 
-[node name="Label" type="Label" parent="Node2D/Tutorial"]
+[node name="Label" type="Label" parent="Tutrial/Tutorial"]
 texture_filter = 1
 offset_left = -152.0
 offset_top = -178.0
@@ -232,18 +240,18 @@ text = "tap [space] or [gamepad A]
           to jump"
 label_settings = SubResource("LabelSettings_ulum1")
 
-[node name="Area2D" type="Area2D" parent="Node2D/Tutorial"]
+[node name="Area2D" type="Area2D" parent="Tutrial/Tutorial"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Tutorial/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutrial/Tutorial/Area2D"]
 position = Vector2(8, -69)
 scale = Vector2(1.0400001, 1)
 shape = SubResource("RectangleShape2D_mhjv0")
 
-[node name="Tutorial2" type="Node2D" parent="Node2D"]
+[node name="Tutorial2" type="Node2D" parent="Tutrial"]
 position = Vector2(-138, 157)
 script = ExtResource("7_ulum1")
 
-[node name="Label" type="Label" parent="Node2D/Tutorial2"]
+[node name="Label" type="Label" parent="Tutrial/Tutorial2"]
 texture_filter = 1
 offset_left = -133.0
 offset_top = -192.0
@@ -254,19 +262,19 @@ text = "[keyboard arrow/A/D]
       to move"
 label_settings = SubResource("LabelSettings_ulum1")
 
-[node name="Area2D" type="Area2D" parent="Node2D/Tutorial2"]
+[node name="Area2D" type="Area2D" parent="Tutrial/Tutorial2"]
 position = Vector2(-25, 29)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Tutorial2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutrial/Tutorial2/Area2D"]
 position = Vector2(8, -69)
 scale = Vector2(1.0400001, 1)
 shape = SubResource("RectangleShape2D_mhjv0")
 
-[node name="Tutorial3" type="Node2D" parent="Node2D"]
+[node name="Tutorial3" type="Node2D" parent="Tutrial"]
 position = Vector2(677, 201)
 script = ExtResource("7_ulum1")
 
-[node name="Label" type="Label" parent="Node2D/Tutorial3"]
+[node name="Label" type="Label" parent="Tutrial/Tutorial3"]
 texture_filter = 1
 offset_left = -146.0
 offset_top = -178.0
@@ -275,18 +283,18 @@ offset_bottom = -123.0
 text = "long press for high jump!"
 label_settings = SubResource("LabelSettings_ulum1")
 
-[node name="Area2D" type="Area2D" parent="Node2D/Tutorial3"]
+[node name="Area2D" type="Area2D" parent="Tutrial/Tutorial3"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Tutorial3/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutrial/Tutorial3/Area2D"]
 position = Vector2(8, -69)
 scale = Vector2(1.0400001, 1)
 shape = SubResource("RectangleShape2D_mhjv0")
 
-[node name="Tutorial4" type="Node2D" parent="Node2D"]
+[node name="Tutorial4" type="Node2D" parent="Tutrial"]
 position = Vector2(1351, 203)
 script = ExtResource("7_ulum1")
 
-[node name="Label" type="Label" parent="Node2D/Tutorial4"]
+[node name="Label" type="Label" parent="Tutrial/Tutorial4"]
 texture_filter = 1
 offset_left = -197.0
 offset_top = -172.0
@@ -296,23 +304,23 @@ text = "Jump and attach to the wall
         to wallslide"
 label_settings = SubResource("LabelSettings_ulum1")
 
-[node name="Arrow" type="Sprite2D" parent="Node2D/Tutorial4/Label"]
+[node name="Arrow" type="Sprite2D" parent="Tutrial/Tutorial4/Label"]
 texture_filter = 1
 position = Vector2(261, 86)
 texture = ExtResource("5_8xidb")
 
-[node name="Area2D" type="Area2D" parent="Node2D/Tutorial4"]
+[node name="Area2D" type="Area2D" parent="Tutrial/Tutorial4"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Tutorial4/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutrial/Tutorial4/Area2D"]
 position = Vector2(-26.45996, -71.25)
 scale = Vector2(1.0400001, 1)
 shape = SubResource("RectangleShape2D_mhjv0")
 
-[node name="Tutorial5" type="Node2D" parent="Node2D"]
+[node name="Tutorial5" type="Node2D" parent="Tutrial"]
 position = Vector2(1499, 768)
 script = ExtResource("7_ulum1")
 
-[node name="Label" type="Label" parent="Node2D/Tutorial5"]
+[node name="Label" type="Label" parent="Tutrial/Tutorial5"]
 texture_filter = 1
 offset_left = -213.0
 offset_top = 71.0
@@ -324,20 +332,20 @@ text = " Arrows + Jump
 to switch sides"
 label_settings = SubResource("LabelSettings_ulum1")
 
-[node name="Area2D" type="Area2D" parent="Node2D/Tutorial5"]
+[node name="Area2D" type="Area2D" parent="Tutrial/Tutorial5"]
 position = Vector2(14, 490)
 scale = Vector2(1, 4.559999)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Tutorial5/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutrial/Tutorial5/Area2D"]
 position = Vector2(-111, -73.245636)
 scale = Vector2(1.0400001, 1)
 shape = SubResource("RectangleShape2D_mhjv0")
 
-[node name="Tutorial6" type="Node2D" parent="Node2D"]
+[node name="Tutorial6" type="Node2D" parent="Tutrial"]
 position = Vector2(1126, 1678)
 script = ExtResource("7_ulum1")
 
-[node name="Label" type="Label" parent="Node2D/Tutorial6"]
+[node name="Label" type="Label" parent="Tutrial/Tutorial6"]
 texture_filter = 1
 offset_left = -76.0
 offset_top = 1.0
@@ -346,11 +354,11 @@ offset_bottom = 28.0
 text = "look out!"
 label_settings = SubResource("LabelSettings_ulum1")
 
-[node name="Area2D" type="Area2D" parent="Node2D/Tutorial6"]
+[node name="Area2D" type="Area2D" parent="Tutrial/Tutorial6"]
 position = Vector2(49.999996, 490)
 scale = Vector2(1.8400049, 4.559999)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Tutorial6/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutrial/Tutorial6/Area2D"]
 position = Vector2(-39, -95.83334)
 scale = Vector2(0.10290578, 0.5025772)
 shape = SubResource("RectangleShape2D_mhjv0")

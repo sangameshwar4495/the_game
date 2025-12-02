@@ -1,8 +1,12 @@
 extends Area2D
 
-@export var player: CharacterBody2D
-# Called when the node enters the scene tree for the first time.
+var player: CharacterBody2D
+
+func _ready() -> void:
+	var players = get_tree().get_nodes_in_group("player")
+	if players.size() > 0:
+		player = players[0]
+
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == player.name:
+	if body.is_in_group("player"):
 		body.die()
-	

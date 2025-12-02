@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsk1bmbq5bf8x"]
+
+[ext_resource type="Texture2D" uid="uid://d24emgns8mtm2" path="res://assets/sprites/white.png" id="1_aewcx"]
+[ext_resource type="Script" uid="uid://dep7hj6hbdb8n" path="res://assets/worker_ant/worker_ant.gd" id="1_nchg6"]
+[ext_resource type="PackedScene" uid="uid://4sf03s5f00cc" path="res://assets/level_prefabs/spike/killzone.tscn" id="2_5iji7"]
+[ext_resource type="FontFile" uid="uid://de2oe4cfumvi2" path="res://assets/fonts/monogram.ttf" id="4_axdij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lv8lt"]
+size = Vector2(82.5, 43)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5peaj"]
+font = ExtResource("4_axdij")
+font_size = 64
+
+[node name="Worker_Ant" type="CharacterBody2D"]
+script = ExtResource("1_nchg6")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 10)
+shape = SubResource("RectangleShape2D_lv8lt")
+
+[node name="GFX" type="Node2D" parent="."]
+position = Vector2(1, 0)
+
+[node name="Mid" type="Sprite2D" parent="GFX"]
+modulate = Color(0.7196546, 0.34941047, 0.17234102, 1)
+texture = ExtResource("1_aewcx")
+
+[node name="Head" type="Sprite2D" parent="GFX"]
+modulate = Color(0.8039376, 0.40465075, 0.21681377, 1)
+position = Vector2(25, 1)
+rotation = -0.025774596
+scale = Vector2(1.3282828, 1.3282828)
+texture = ExtResource("1_aewcx")
+
+[node name="Butt" type="Sprite2D" parent="GFX"]
+modulate = Color(0.8039376, 0.40465075, 0.21681377, 1)
+position = Vector2(-30.999996, 1.7881393e-07)
+rotation = 0.10016074
+scale = Vector2(1.1537454, 1.1537454)
+texture = ExtResource("1_aewcx")
+
+[node name="Butt" type="Sprite2D" parent="GFX/Butt"]
+modulate = Color(0.8039376, 0.40465075, 0.21681377, 1)
+z_index = -1
+position = Vector2(-17.50797, -0.85378766)
+rotation = -0.055347458
+scale = Vector2(0.4615784, 0.4615784)
+texture = ExtResource("1_aewcx")
+
+[node name="Eye" type="Sprite2D" parent="GFX"]
+modulate = Color(0.23577818, 0.093559064, 0.02595346, 1)
+position = Vector2(37.999985, -8.000001)
+rotation = 0.012712612
+scale = Vector2(0.3268602, 0.3268602)
+texture = ExtResource("1_aewcx")
+
+[node name="Leg1" type="Node2D" parent="GFX"]
+position = Vector2(-39, 14)
+
+[node name="Leg" type="Sprite2D" parent="GFX/Leg1"]
+modulate = Color(0.7196546, 0.34941047, 0.17234102, 1)
+position = Vector2(-2, 9)
+rotation = 0.029776663
+scale = Vector2(0.2815362, 0.5040781)
+texture = ExtResource("1_aewcx")
+
+[node name="Leg2" type="Node2D" parent="GFX"]
+position = Vector2(25, 17)
+
+[node name="Leg" type="Sprite2D" parent="GFX/Leg2"]
+modulate = Color(0.7196546, 0.34941047, 0.17234102, 1)
+position = Vector2(-2, 9)
+rotation = 0.029776663
+scale = Vector2(0.2815362, 0.5040781)
+texture = ExtResource("1_aewcx")
+
+[node name="Mouth" type="Node2D" parent="GFX"]
+position = Vector2(41, 2)
+rotation = -1.322721
+
+[node name="Leg" type="Sprite2D" parent="GFX/Mouth"]
+modulate = Color(0.7196546, 0.34941047, 0.17234102, 1)
+position = Vector2(-2, 9)
+rotation = 0.029776663
+scale = Vector2(0.2815362, 0.5040781)
+texture = ExtResource("1_aewcx")
+
+[node name="ExclaimSign" type="Label" parent="GFX"]
+texture_filter = 1
+offset_left = 44.0
+offset_top = -80.0
+offset_right = 84.0
+offset_bottom = -29.0
+text = "!"
+label_settings = SubResource("LabelSettings_5peaj")
+
+[node name="Killzone" parent="." instance=ExtResource("2_5iji7")]
+scale = Vector2(0.5020332, 1.6238741)
