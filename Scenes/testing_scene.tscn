@@ -248,7 +248,7 @@ scale = Vector2(1.0400001, 1)
 shape = SubResource("RectangleShape2D_mhjv0")
 
 [node name="Tutorial3" type="Node2D" parent="Node2D"]
-position = Vector2(613, 184)
+position = Vector2(677, 201)
 script = ExtResource("7_ulum1")
 
 [node name="Label" type="Label" parent="Node2D/Tutorial3"]
