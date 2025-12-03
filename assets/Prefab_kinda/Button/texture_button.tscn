@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8xc7a7j6c3b5"]
+[gd_scene load_steps=5 format=3 uid="uid://b8xc7a7j6c3b5"]
 
 [ext_resource type="Script" uid="uid://dt2pdvru2ne7q" path="res://assets/Prefab_kinda/Button/texture_button.gd" id="1_lftdj"]
 [ext_resource type="FontFile" uid="uid://blil4ytliy3fu" path="res://assets/Prefab_kinda/editundo.ttf" id="1_vov2r"]
 [ext_resource type="Texture2D" uid="uid://2sokdip2j8cg" path="res://assets/Prefab_kinda/Button/alternate.png" id="3_5re12"]
 
+[sub_resource type="Texture2DRD" id="Texture2DRD_5re12"]
+
 [node name="TextureButton" type="TextureButton"]
+process_mode = 3
 clip_contents = true
 custom_minimum_size = Vector2(0, 40)
 offset_right = 158.0
 offset_bottom = 40.0
 size_flags_stretch_ratio = 0.0
+texture_normal = SubResource("Texture2DRD_5re12")
 script = ExtResource("1_lftdj")
 
 [node name="Text" type="RichTextLabel" parent="."]
@@ -25,22 +29,23 @@ offset_right = 34.0
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_fonts/normal_font = ExtResource("1_vov2r")
 theme_override_fonts/bold_font = ExtResource("1_vov2r")
 theme_override_fonts/bold_italics_font = ExtResource("1_vov2r")
 theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
-text = "[center]START[/center]"
+text = "[center] Text button [/center]"
 fit_content = true
 autowrap_mode = 0
 
 [node name="Right" type="Sprite2D" parent="."]
-position = Vector2(116, 16)
+position = Vector2(179, 16)
 rotation = -1.5707964
 texture = ExtResource("3_5re12")
 
 [node name="Left" type="Sprite2D" parent="."]
-position = Vector2(25, 16)
+position = Vector2(-21, 16)
 rotation = 1.5707964
 texture = ExtResource("3_5re12")
 

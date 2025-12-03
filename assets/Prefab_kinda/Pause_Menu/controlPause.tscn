@@ -6,23 +6,27 @@
 script/source = "extends Control
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var resume_: TextureButton = $CanvasLayer/VBoxContainer/Resume
+@export var PauseMenu: CanvasLayer
+
 func resume():
 	canvas_layer.visible = false
 	get_tree().paused = false
 func pause():
-	get_tree().paused = true
 	canvas_layer.visible = true
+	get_tree().paused = true
 
 func test_esc():
 	if Input.is_action_just_pressed(\"Pause\"):
 		if get_tree().paused:
 			resume()
 		else:
-			resume_.grab_focus()
 			pause()
+			await get_tree().process_frame
+			resume_.grab_focus()
+			
+
 
 func _on_resume_button_down() -> void:
-	await get_tree().create_timer(0.2).timeout
 	resume()
 
 func _on_quit_menu_button_down() -> void:
@@ -31,10 +35,11 @@ func _on_quit_menu_button_down() -> void:
 
 func _on_quit_game_button_down() -> void:
 	get_tree().quit()
-func _ready() -> void:
-	await get_tree().process_frame
-	resume_.grab_focus()
 	
+#func _ready() -> void:
+	#await get_tree().process_frame
+	#resume()
+
 func _process(delta: float) -> void:
 	test_esc()
 "

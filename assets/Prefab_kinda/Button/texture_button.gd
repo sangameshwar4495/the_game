@@ -22,7 +22,6 @@ func show_arrows():
 	for arrow in [$Right, $Left]:
 		arrow.visible = true
 		#arrow.global_position.y = get_global_rect().position.y + (get_global_rect().size.y / 3.0)
-
 	var center_x = get_global_rect().position.x + (get_global_rect().size.x / 2)
 	$Left.global_position.x = center_x - arrow_margin_from_center
 	$Right.global_position.x = center_x + arrow_margin_from_center
