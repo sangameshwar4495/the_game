@@ -89,7 +89,7 @@ var stamina = 100.0
 var stamina_recharge_delay = 0.0
 var stamina_recharge_cooldown = 0.56
 
-var glide_stamina_drain := 8.0
+var glide_stamina_drain := 10.0
 var wall_jump_stamina_cost := 12.0
 var stamina_recovery_rate := 4.0
 

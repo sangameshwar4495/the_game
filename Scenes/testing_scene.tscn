@@ -33,7 +33,7 @@ position = Vector2(-233, -283)
 [node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("1_ybjcv")]
 
 [node name="Player" parent="." instance=ExtResource("2_ybjcv")]
-position = Vector2(-934, 1529)
+position = Vector2(1246, 1714)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
@@ -188,6 +188,36 @@ texture = ExtResource("3_8xidb")
 [node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block24"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block24/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ybjcv")
+
+[node name="Block29" type="Node2D" parent="Level_Geom"]
+z_index = 2
+position = Vector2(-1668, 1971)
+rotation = 4.712389
+scale = Vector2(4.640562, 30.692646)
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block29"]
+modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+texture = ExtResource("3_8xidb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block29"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block29/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ybjcv")
+
+[node name="Block31" type="Node2D" parent="Level_Geom"]
+z_index = 2
+position = Vector2(-1355, 2278)
+rotation = 4.712389
+scale = Vector2(4.640562, 30.692646)
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block31"]
+modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+texture = ExtResource("3_8xidb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block31"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block31/StaticBody2D"]
 shape = SubResource("RectangleShape2D_ybjcv")
 
 [node name="Block26" type="Node2D" parent="Level_Geom"]
@@ -431,6 +461,22 @@ texture = ExtResource("3_8xidb")
 position = Vector2(-0.26861572, 0)
 shape = SubResource("RectangleShape2D_ybjcv")
 
+[node name="Block30" type="Node2D" parent="Level_Geom"]
+z_index = 2
+position = Vector2(-1196, 1939)
+rotation = 4.712389
+scale = Vector2(-3.7228668, 2.9271271)
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block30"]
+modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+texture = ExtResource("3_8xidb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block30"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block30/StaticBody2D"]
+position = Vector2(-0.26861572, 0)
+shape = SubResource("RectangleShape2D_ybjcv")
+
 [node name="Block22" type="Node2D" parent="Level_Geom"]
 z_index = 2
 position = Vector2(-977, 1208)
@@ -456,6 +502,15 @@ position = Vector2(1037, 1936)
 position = Vector2(-1711, 1385.0001)
 rotation = 1.5987729
 
+[node name="Spike8" parent="Level_Geom" instance=ExtResource("5_j7rnq")]
+position = Vector2(-753.00006, 1376)
+rotation = 1.5229771
+
+[node name="Spike26" parent="Level_Geom" instance=ExtResource("5_j7rnq")]
+position = Vector2(-940, 1634)
+rotation = 1.9549097
+scale = Vector2(0.9547758, 1.2634472)
+
 [node name="Spike5" parent="Level_Geom" instance=ExtResource("5_j7rnq")]
 position = Vector2(-1715.0001, 1529.0001)
 rotation = 1.5987729
@@ -473,7 +528,19 @@ position = Vector2(-1065, 1650)
 rotation = 1.5987729
 
 [node name="Spike22" parent="Level_Geom" instance=ExtResource("5_j7rnq")]
-position = Vector2(-1420, 1684)
+position = Vector2(-1731, 2206)
+rotation = 6.2831855
+
+[node name="Spike24" parent="Level_Geom" instance=ExtResource("5_j7rnq")]
+position = Vector2(-1424, 1682)
+rotation = 6.2831855
+
+[node name="Spike23" parent="Level_Geom" instance=ExtResource("5_j7rnq")]
+position = Vector2(-1354.0001, 2207)
+rotation = 3.146572
+
+[node name="Spike25" parent="Level_Geom" instance=ExtResource("5_j7rnq")]
+position = Vector2(-1354.0001, 2207)
 rotation = 3.146572
 
 [node name="Spike9" parent="Level_Geom" instance=ExtResource("5_j7rnq")]
@@ -524,10 +591,16 @@ position = Vector2(123, 1901)
 [node name="Worker_Ant2" parent="Level_Geom" instance=ExtResource("6_lv8lt")]
 position = Vector2(-1163, 1644)
 
+[node name="Worker_Ant3" parent="Level_Geom" instance=ExtResource("6_lv8lt")]
+position = Vector2(-2016, 1857)
+
+[node name="Worker_Ant4" parent="Level_Geom" instance=ExtResource("6_lv8lt")]
+position = Vector2(-1313, 1855)
+
 [node name="Tutrial" type="Node2D" parent="."]
 
 [node name="Tutorial" type="Node2D" parent="Tutrial"]
-position = Vector2(181, 184)
+position = Vector2(239, 178)
 script = ExtResource("7_ulum1")
 
 [node name="Label" type="Label" parent="Tutrial/Tutorial"]
@@ -554,10 +627,10 @@ script = ExtResource("7_ulum1")
 
 [node name="Label" type="Label" parent="Tutrial/Tutorial2"]
 texture_filter = 1
-offset_left = -133.0
-offset_top = -192.0
-offset_right = 69.0
-offset_bottom = -103.0
+offset_left = -72.0
+offset_top = -168.0
+offset_right = 168.0
+offset_bottom = -79.0
 text = "[keyboard arrow/A/D]
    or [left stick]
       to move"
@@ -584,6 +657,7 @@ offset_right = 178.0
 offset_bottom = -123.0
 text = "long press for high jump!"
 label_settings = SubResource("LabelSettings_ulum1")
+metadata/_edit_use_anchors_ = true
 
 [node name="Area2D" type="Area2D" parent="Tutrial/Tutorial3"]
 scale = Vector2(0.7798506, 0.9356378)
@@ -599,12 +673,18 @@ script = ExtResource("7_ulum1")
 
 [node name="Label" type="Label" parent="Tutrial/Tutorial7"]
 texture_filter = 1
-offset_left = -182.0
+offset_left = -102.0
 offset_top = -169.0
-offset_right = 202.0
+offset_right = 282.0
 offset_bottom = -114.0
 text = "hold left and jump to wall climb"
 label_settings = SubResource("LabelSettings_ulum1")
+
+[node name="Arrow2" type="Sprite2D" parent="Tutrial/Tutorial7/Label"]
+texture_filter = 1
+position = Vector2(43, -98)
+rotation = -0.7957673
+texture = ExtResource("5_8xidb")
 
 [node name="Area2D" type="Area2D" parent="Tutrial/Tutorial7"]
 
@@ -619,10 +699,10 @@ script = ExtResource("7_ulum1")
 
 [node name="Label" type="Label" parent="Tutrial/Tutorial8"]
 texture_filter = 1
-offset_left = -182.0
-offset_top = -169.0
-offset_right = 202.0
-offset_bottom = -114.0
+offset_left = -66.0
+offset_top = -163.0
+offset_right = 318.0
+offset_bottom = -108.0
 text = "collect pollen orbs to increase 
           pollen meter"
 label_settings = SubResource("LabelSettings_ulum1")
@@ -632,7 +712,7 @@ position = Vector2(-14, 0)
 scale = Vector2(1.3336899, 0.92631173)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tutrial/Tutorial8/Area2D"]
-position = Vector2(105, -46.592285)
+position = Vector2(156.70807, -15.113752)
 scale = Vector2(0.28940582, 0.5409845)
 shape = SubResource("RectangleShape2D_mhjv0")
 
@@ -668,10 +748,10 @@ script = ExtResource("7_ulum1")
 
 [node name="Label" type="Label" parent="Tutrial/Tutorial5"]
 texture_filter = 1
-offset_left = -213.0
-offset_top = 71.0
-offset_right = 111.0
-offset_bottom = 184.0
+offset_left = -149.0
+offset_top = 90.0
+offset_right = 175.0
+offset_bottom = 203.0
 text = " Arrows + Jump 
 
 
@@ -693,10 +773,9 @@ script = ExtResource("7_ulum1")
 
 [node name="Label" type="Label" parent="Tutrial/Tutorial6"]
 texture_filter = 1
-offset_left = -76.0
-offset_top = 1.0
-offset_right = 32.0
-offset_bottom = 28.0
+offset_left = -72.0
+offset_right = 36.0
+offset_bottom = 27.0
 text = "look out!"
 label_settings = SubResource("LabelSettings_ulum1")
 
@@ -709,8 +788,45 @@ position = Vector2(-39, -95.83334)
 scale = Vector2(0.10290578, 0.5025772)
 shape = SubResource("RectangleShape2D_mhjv0")
 
+[node name="Tutorial9" type="Node2D" parent="Tutrial"]
+position = Vector2(-1118, 1425)
+script = ExtResource("7_ulum1")
+
+[node name="Label" type="Label" parent="Tutrial/Tutorial9"]
+texture_filter = 1
+offset_left = -2.0
+offset_top = -76.0
+offset_right = 334.0
+offset_bottom = -49.0
+text = "press and hold jump to glide"
+label_settings = SubResource("LabelSettings_ulum1")
+
+[node name="Area2D" type="Area2D" parent="Tutrial/Tutorial9"]
+position = Vector2(3, 178.00003)
+scale = Vector2(6.7436767, 2.6862087)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tutrial/Tutorial9/Area2D"]
+position = Vector2(-10.380096, -29.409485)
+scale = Vector2(0.1158528, 0.5025771)
+shape = SubResource("RectangleShape2D_mhjv0")
+
 [node name="Pollen" parent="." instance=ExtResource("11_dyvnm")]
-position = Vector2(-995, 1509)
+position = Vector2(-875, 1531)
+
+[node name="Pollen3" parent="." instance=ExtResource("11_dyvnm")]
+position = Vector2(-1080, 2434)
+
+[node name="Pollen4" parent="." instance=ExtResource("11_dyvnm")]
+position = Vector2(-1231, 2434)
+
+[node name="Pollen5" parent="." instance=ExtResource("11_dyvnm")]
+position = Vector2(-1361, 2434)
+
+[node name="Pollen6" parent="." instance=ExtResource("11_dyvnm")]
+position = Vector2(-1477, 2434)
+
+[node name="Pollen2" parent="." instance=ExtResource("11_dyvnm")]
+position = Vector2(-2366, 1886)
 
 [node name="Checkpoint_2" parent="." instance=ExtResource("10_66ky8")]
 position = Vector2(-55, 1778)
@@ -741,23 +857,12 @@ offset_bottom = 2115.142
 scale = Vector2(6.1968765, 6.1968765)
 text = "Falling platforms"
 
-[node name="Label6" type="Label" parent="."]
-z_index = 3
-offset_left = -1897.0
-offset_top = 1967.9999
-offset_right = -1766.0
-offset_bottom = 2016.9999
-rotation = -0.0066854293
-scale = Vector2(6.1968765, 6.1968765)
-text = "Some sequence 
-here"
-
 [node name="Label7" type="Label" parent="."]
 z_index = 3
-offset_left = -2603.0
-offset_top = -221.00002
-offset_right = -2344.0
-offset_bottom = -120.000015
+offset_left = -2497.0
+offset_top = -213.00002
+offset_right = -2238.0
+offset_bottom = -112.000015
 rotation = -0.0066854293
 scale = Vector2(6.1968765, 6.1968765)
 text = "Ants + Wall Climb + Parkour 
