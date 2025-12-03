@@ -32,7 +32,7 @@ position = Vector2(-233, -283)
 [node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("1_ybjcv")]
 
 [node name="Player" parent="." instance=ExtResource("2_ybjcv")]
-position = Vector2(-222, -190)
+position = Vector2(-934, 1529)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
@@ -40,6 +40,7 @@ position = Vector2(-235, -283)
 script = ExtResource("3_s6pog")
 
 [node name="Level_Geom" type="Node2D" parent="."]
+position = Vector2(62, 13)
 
 [node name="Block2" type="Node2D" parent="Level_Geom"]
 z_index = 2
@@ -383,6 +384,37 @@ texture = ExtResource("3_8xidb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block14/StaticBody2D"]
 shape = SubResource("RectangleShape2D_ybjcv")
 
+[node name="Block25" type="Node2D" parent="Level_Geom"]
+z_index = 2
+position = Vector2(-1310, 1730)
+rotation = 4.712389
+scale = Vector2(-2.82332, 18.1626)
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block25"]
+modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+texture = ExtResource("3_8xidb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block25"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block25/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ybjcv")
+
+[node name="Block27" type="Node2D" parent="Level_Geom"]
+z_index = 2
+position = Vector2(-1554, 1715)
+rotation = 4.712389
+scale = Vector2(-3.7228668, 2.9271271)
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block27"]
+modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
+texture = ExtResource("3_8xidb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level_Geom/Block27"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level_Geom/Block27/StaticBody2D"]
+position = Vector2(-0.26861572, 0)
+shape = SubResource("RectangleShape2D_ybjcv")
+
 [node name="Block22" type="Node2D" parent="Level_Geom"]
 z_index = 2
 position = Vector2(-977, 1208)
@@ -463,17 +495,14 @@ rotation = 3.1159163
 [node name="Falling_Block" parent="Level_Geom" instance=ExtResource("6_p34cg")]
 position = Vector2(-2771, 2336)
 
-[node name="Falling_Block2" parent="Level_Geom" instance=ExtResource("6_p34cg")]
-position = Vector2(-2998, 2336)
-
 [node name="Falling_Block3" parent="Level_Geom" instance=ExtResource("6_p34cg")]
 position = Vector2(-3229, 2336)
 
-[node name="Falling_Block4" parent="Level_Geom" instance=ExtResource("6_p34cg")]
-position = Vector2(-3459, 2336)
-
 [node name="Worker_Ant" parent="Level_Geom" instance=ExtResource("6_lv8lt")]
 position = Vector2(123, 1901)
+
+[node name="Worker_Ant2" parent="Level_Geom" instance=ExtResource("6_lv8lt")]
+position = Vector2(-1163, 1644)
 
 [node name="Tutrial" type="Node2D" parent="."]
 
@@ -669,38 +698,24 @@ scale = Vector2(0.6042243, 0.6042243)
 texture = ExtResource("3_8xidb")
 
 [node name="Checkpoint_2" parent="." instance=ExtResource("10_66ky8")]
-position = Vector2(-119, 1766)
+position = Vector2(-55, 1778)
 
 [node name="Checkpoint_3" parent="." instance=ExtResource("10_66ky8")]
-position = Vector2(-962, 1461)
+position = Vector2(-949, 1473)
 
 [node name="Checkpoint_4" parent="." instance=ExtResource("10_66ky8")]
-position = Vector2(-2461, 1852)
+position = Vector2(-2422, 1865)
 
 [node name="Checkpoint_1" parent="." instance=ExtResource("10_66ky8")]
-position = Vector2(1172, 1762)
+position = Vector2(1241, 1778)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -4886.0
-offset_top = -810.00006
-offset_right = -4767.0
-offset_bottom = -787.00006
+offset_left = -4847.0
+offset_top = -792.99994
+offset_right = -4728.0
+offset_bottom = -769.99994
 scale = Vector2(6.1968765, 6.1968765)
 text = "Level End point"
-
-[node name="Label2" type="Label" parent="."]
-z_index = 3
-offset_left = -2000.0
-offset_top = 1629.0
-offset_right = -1794.0
-offset_bottom = 1782.0
-scale = Vector2(6.1968765, 6.1968765)
-text = "Interesting 
-platforms 
-downwards
-
-with spikes here and 
-there"
 
 [node name="Label3" type="Label" parent="."]
 z_index = 3
@@ -713,28 +728,14 @@ text = "Falling platforms"
 
 [node name="Label5" type="Label" parent="."]
 z_index = 3
-offset_left = -4479.0
-offset_top = 765.0
-offset_right = -4348.0
-offset_bottom = 791.1421
+offset_left = -4378.0
+offset_top = 730.00006
+offset_right = -4247.0
+offset_bottom = 779.00006
 rotation = 0.004031876
 scale = Vector2(6.1968765, 6.1968765)
 text = "Some climbing 
 related part"
-
-[node name="Label6" type="Label" parent="."]
-z_index = 3
-offset_left = -2634.0
-offset_top = 184.00006
-offset_right = -2451.0
-offset_bottom = 311.00006
-rotation = 0.004031876
-scale = Vector2(6.1968765, 6.1968765)
-text = "Ants here, a hide
-from begin 
-caught sequence, 
-at end, you enable level
-door or something"
 
 [node name="Label4" type="Label" parent="."]
 z_index = 3

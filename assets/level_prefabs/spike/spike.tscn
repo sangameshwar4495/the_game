@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://4sf03s5f00cc" path="res://assets/level_prefabs/spike/killzone.tscn" id="2_cxos0"]
 
 [node name="Spike" type="Node2D"]
+z_index = 2
 
 [node name="Visuals" type="Node2D" parent="."]
 

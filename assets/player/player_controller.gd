@@ -33,6 +33,8 @@ const WALL_COYOTE_TIME = 0.11
 
 var jump_audio_stream = preload("res://assets/audio/jump.wav")
 var wall_jump_audio_stream = preload("res://assets/audio/wall_jump.wav")
+var land_audio_stream = preload("res://assets/audio/land.wav")
+var die_audio_stream = preload("res://assets/audio/hurt.wav")
 
 var vel := Vector2.ZERO
 var axis := Vector2.ZERO
@@ -50,6 +52,7 @@ var wall_dir = 0
 var last_wall_dir = 0
 var wall_jump_lock = 0.0
 var is_gliding = false
+var was_gliding = false
 
 var glide_delay := 0.0
 var glide_delay_time := 0.22
@@ -91,6 +94,9 @@ var wall_jump_stamina_cost := 12.0
 var stamina_recovery_rate := 10.0
 
 var current_spawn: Vector2
+var was_on_floor = false
+var was_on_wall = false
+var prev_vel_y = 0
 
 func sign_nonzero(x: float) -> int:
 	if x > 0: return 1
@@ -108,6 +114,7 @@ func _ready():
 func _physics_process(delta):
 	get_input_axis()
 	glide_delay = max(glide_delay - delta, 0.0)
+
 	apply_gravity(delta)
 	check_wall()
 	handle_floor_and_coyote(delta)
@@ -117,6 +124,7 @@ func _physics_process(delta):
 	wall_jump_lock = max(wall_jump_lock - delta, 0.0)
 	horizontal_movement(delta)
 
+	prev_vel_y = vel.y
 	velocity = vel
 	move_and_slide()
 	vel = velocity
@@ -129,6 +137,21 @@ func _physics_process(delta):
 	update_cape(delta)
 	apply_debug_rotation()
 
+	SFX_post_motion()
+
+func SFX_post_motion():
+	if is_on_floor() and not was_on_floor and prev_vel_y > 200:
+		play_sfx(land_audio_stream)
+
+	was_gliding = is_gliding
+	was_on_floor = is_on_floor()
+	was_on_wall = on_wall
+
+func play_sfx(stream):
+	if audio and stream:
+		audio.stream = stream
+		audio.play()
+
 func update_stamina(delta):
 	if is_gliding:
 		stamina -= glide_stamina_drain * delta
@@ -137,7 +160,10 @@ func update_stamina(delta):
 		if stamina_recharge_delay > 0.0:
 			stamina_recharge_delay -= delta
 		else:
+			var before = stamina
 			stamina += stamina_recovery_rate * delta
+			if stamina >= max_stamina and before < max_stamina:
+				pass
 
 	stamina = clamp(stamina, 0.0, max_stamina)
 
@@ -165,6 +191,7 @@ func apply_gravity(delta):
 	else:
 		var clip = MAX_FALL_SPEED
 		var can_glide = glide_delay <= 0.0
+
 		if can_glide and Input.is_action_pressed("jump") and vel.y > GLIDE_CLIP_VEL and stamina > 0.0:
 			clip = GLIDE_VELOCITY
 			is_gliding = true
@@ -239,8 +266,7 @@ func horizontal_movement(delta):
 		vel.x = lerp(vel.x, 0.0, 0.08)
 
 func do_jump():
-	audio.stream = jump_audio_stream
-	audio.play()
+	play_sfx(jump_audio_stream)
 	vel.y = JUMP_VELOCITY
 	can_jump = false
 	glide_delay = glide_delay_time
@@ -254,8 +280,7 @@ func do_wall_jump():
 	stamina_recharge_delay = stamina_recharge_cooldown
 	stamina = max(stamina, 0.0)
 
-	audio.stream = wall_jump_audio_stream
-	audio.play()
+	play_sfx(wall_jump_audio_stream)
 
 	var d = int(sign(axis.x))
 	var p = WALL_JUMP_PUSH
@@ -427,14 +452,24 @@ func distance_to_spawn():
 	var displacement_vector = current_spawn - $".".global_position 
 	return displacement_vector.length()
 
-func die():
-	$".".global_position = current_spawn
-	stamina = max_stamina
+func die() -> void:
+	set_physics_process(false)
+	set_process(false)
 
 	GameEvents.player_died.emit()
+
+	play_sfx(die_audio_stream)
+
+	await get_tree().create_timer(0.35).timeout 
+
+	global_position = current_spawn
+	stamina = max_stamina
 
 	var time := 0.2
 	if distance_to_spawn() > 15:
 		get_tree().paused = true
 		await get_tree().create_timer(time).timeout
 		get_tree().paused = false
+
+	set_physics_process(true)
+	set_process(true)

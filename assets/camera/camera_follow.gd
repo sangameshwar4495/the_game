@@ -9,8 +9,21 @@ extends Camera2D
 var player: Node2D
 var _look_offset := Vector2.ZERO
 
+# --- SHAKE ---
+var shake_strength := 0.0
+var shake_duration := 0.0
+var shake_timer := 0.0
+var shake_offset := Vector2.ZERO
+var rng := RandomNumberGenerator.new()
+
 func _ready() -> void:
 	player = get_node("../Player")
+	GameEvents.player_died.connect(on_player_died)
+
+func start_shake(strength: float, duration: float) -> void:
+	shake_strength = strength
+	shake_duration = duration
+	shake_timer = duration
 
 func _physics_process(delta: float) -> void:
 	var p := player.global_position
@@ -26,18 +39,14 @@ func _physics_process(delta: float) -> void:
 	var target := cam
 
 	if p.x > right:
-		var excess := p.x - right
-		target.x += excess
+		target.x += p.x - right
 	elif p.x < left:
-		var excess := p.x - left
-		target.x += excess
+		target.x += p.x - left
 
 	if p.y > bottom:
-		var excess := p.y - bottom
-		target.y += excess
+		target.y += p.y - bottom
 	elif p.y < top:
-		var excess := p.y - top
-		target.y += excess
+		target.y += p.y - top
 
 	var vel := Vector2.ZERO
 	if player.has_method("get_velocity"):
@@ -53,7 +62,24 @@ func _physics_process(delta: float) -> void:
 	)
 
 	_look_offset = _look_offset.lerp(desired_offset, look_ahead_lerp * delta)
-
 	target += _look_offset
 
-	global_position = global_position.lerp(target, camera_lerp_speed * delta)
+	var base := global_position.lerp(target, camera_lerp_speed * delta)
+
+	update_shake(delta)
+	global_position = base + shake_offset
+
+
+func update_shake(delta: float) -> void:
+	if shake_timer > 0.0:
+		shake_timer -= delta
+		var falloff := shake_timer / shake_duration
+		shake_offset = Vector2(
+			rng.randf_range(-1, 1),
+			rng.randf_range(-1, 1)
+		) * shake_strength * falloff
+	else:
+		shake_offset = Vector2.ZERO
+
+func on_player_died() -> void:
+	start_shake(10.0, 0.4)
