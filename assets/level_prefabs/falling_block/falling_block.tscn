@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu1nlk2ttt3x"]
+[gd_scene load_steps=6 format=3 uid="uid://cu1nlk2ttt3x"]
 
 [ext_resource type="Script" uid="uid://jqwneqbgaw6r" path="res://assets/level_prefabs/falling_block/falling_block.gd" id="1_kxcxe"]
 [ext_resource type="Texture2D" uid="uid://d24emgns8mtm2" path="res://assets/sprites/white.png" id="1_vesa3"]
+[ext_resource type="Texture2D" uid="uid://quaxt0o0ocs7" path="res://assets/sprites/ground.png" id="3_o3db3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66ky8"]
 size = Vector2(32, 32)
@@ -22,6 +23,18 @@ shape = SubResource("RectangleShape2D_66ky8")
 
 [node name="Player_Check" type="Area2D" parent="."]
 position = Vector2(0, 2)
+
+[node name="Ground" type="Sprite2D" parent="Player_Check"]
+position = Vector2(-0.22321433, -9)
+rotation = 3.1415927
+scale = Vector2(0.25922164, 0.78483087)
+texture = ExtResource("3_o3db3")
+
+[node name="Ground2" type="Sprite2D" parent="Player_Check"]
+position = Vector2(-0.2232143, 6)
+rotation = 3.1415927
+scale = Vector2(0.27321115, 1.1628534)
+texture = ExtResource("3_o3db3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Check"]
 position = Vector2(0, -15)

@@ -104,4 +104,5 @@ Pause={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.4313402, 0.43134028, 0.43134007, 1)
+environment/defaults/default_clear_color=Color(0.2958664, 0.29586655, 0.29586646, 1)
+textures/defaults/default_clear_color=Color(0.3, 0.3, 0.3, 1)
