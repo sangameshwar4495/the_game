@@ -271,13 +271,11 @@ func horizontal_movement(delta):
 
 func instantiate_jump_particles():
 	var Position = feet.global_position
-	print(Position)
 	Particle_fx.global_position = Position
 	Particle_fx.play_particle()
 
 func instantiate_Walljump_particles():
 	var Position = side.global_position
-	print(Position)
 	Particle_fx.global_position = Position
 	Particle_fx.play_particle()
 
@@ -287,7 +285,6 @@ func do_jump():
 	vel.y = JUMP_VELOCITY
 	can_jump = false
 	glide_delay = glide_delay_time
-	
 	
 
 func do_wall_jump():
