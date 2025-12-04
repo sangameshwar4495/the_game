@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://0cu7m2ujsoi1"]
+
+[ext_resource type="Texture2D" uid="uid://d24emgns8mtm2" path="res://assets/sprites/white.png" id="1_ixxq3"]
+[ext_resource type="Script" uid="uid://dvq1k8lvnx4cx" path="res://assets/level_prefabs/amethyst/Amethyst.gd" id="1_u0xpg"]
+[ext_resource type="AudioStream" uid="uid://bmpl64qd7aj12" path="res://assets/audio/wall_jump.wav" id="3_3f4y1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn460"]
+size = Vector2(50, 50)
+
+[node name="Amethyst" type="Node2D"]
+script = ExtResource("1_u0xpg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.7507346, 0.1866903, 0.75675195, 1)
+texture = ExtResource("1_ixxq3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vn460")
+
+[node name="CollectSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_3f4y1")

@@ -36,6 +36,8 @@ var wall_jump_audio_stream = preload("res://assets/audio/wall_jump.wav")
 var land_audio_stream = preload("res://assets/audio/land.wav")
 var die_audio_stream = preload("res://assets/audio/hurt.wav")
 
+var has_amethyst: bool = false
+
 var vel := Vector2.ZERO
 var axis := Vector2.ZERO
 
@@ -472,6 +474,8 @@ func distance_to_spawn():
 func die() -> void:
 	set_physics_process(false)
 	set_process(false)
+	
+	has_amethyst = false
 
 	GameEvents.player_died.emit()
 

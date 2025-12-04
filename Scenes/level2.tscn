@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkn5q7tc1ifuj"]
+[gd_scene load_steps=15 format=3 uid="uid://bkn5q7tc1ifuj"]
 
 [ext_resource type="PackedScene" uid="uid://bsktspv78ug47" path="res://assets/Particles/Jump.tscn" id="1_5qi50"]
 [ext_resource type="PackedScene" uid="uid://q1d7iycpesjo" path="res://assets/Prefab_kinda/Pause_Menu/controlPause.tscn" id="2_1apgh"]
@@ -7,9 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://ciaa83hid64qs" path="res://assets/level_prefabs/block.tscn" id="8_mhlpv"]
 [ext_resource type="PackedScene" uid="uid://bk3mvo1ti5trv" path="res://assets/level_prefabs/spike/spike.tscn" id="9_ng020"]
 [ext_resource type="PackedScene" uid="uid://cu1nlk2ttt3x" path="res://assets/level_prefabs/falling_block/falling_block.tscn" id="10_vn2uo"]
+[ext_resource type="PackedScene" uid="uid://bsk1bmbq5bf8x" path="res://assets/level_prefabs/worker_ant/worker_ant.tscn" id="11_mtqcm"]
+[ext_resource type="Texture2D" uid="uid://d24emgns8mtm2" path="res://assets/sprites/white.png" id="12_mmf1u"]
 [ext_resource type="PackedScene" uid="uid://ctrl7ma3y2b0k" path="res://assets/level_prefabs/pollen/pollen.tscn" id="12_uvwjj"]
 [ext_resource type="PackedScene" uid="uid://cvku1me4whylh" path="res://assets/level_prefabs/Checkpoint/checkpoint.tscn" id="13_ukdoj"]
+[ext_resource type="PackedScene" uid="uid://0cu7m2ujsoi1" path="res://assets/level_prefabs/amethyst/amethyst.tscn" id="13_vn460"]
 [ext_resource type="Texture2D" uid="uid://bugxwog3r3sve" path="res://assets/sprites/black.png" id="19_uv1om"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8hce"]
+size = Vector2(32, 32)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-1, 0)
@@ -24,7 +30,7 @@ position = Vector2(459, 444)
 [node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("2_1apgh")]
 
 [node name="Player" parent="." node_paths=PackedStringArray("Particle_fx") instance=ExtResource("3_ue4po")]
-position = Vector2(585, 442)
+position = Vector2(282, -220)
 Particle_fx = NodePath("../Jump")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -35,13 +41,52 @@ script = ExtResource("4_uoomo")
 [node name="Interractables" type="Node2D" parent="."]
 
 [node name="Pollen" parent="Interractables" instance=ExtResource("12_uvwjj")]
-position = Vector2(-204, 360)
+position = Vector2(-115, 295)
 
-[node name="Checkpoint_1" parent="Interractables" instance=ExtResource("13_ukdoj")]
-position = Vector2(-772, 547)
+[node name="Pollen2" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-644, 306)
+
+[node name="Pollen3" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-1584, 373)
+
+[node name="Pollen4" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-1809, -42)
+
+[node name="Pollen5" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-1057, -293)
+
+[node name="Pollen7" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-91, -641)
+
+[node name="Pollen8" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-147, -97)
+
+[node name="Pollen14" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-151, -429)
+
+[node name="Pollen15" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(123, -90)
+
+[node name="Pollen9" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(125, -392)
+
+[node name="Pollen10" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(192, -758)
+
+[node name="Pollen11" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(287, -104)
+
+[node name="Pollen12" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(338, -475)
+
+[node name="Pollen13" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(25, -657)
+
+[node name="Pollen6" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-1285, -505)
 
 [node name="CPUParticles2D14" type="CPUParticles2D" parent="."]
-position = Vector2(-242, -538)
+position = Vector2(-416, -821)
 emitting = false
 texture = ExtResource("19_uv1om")
 lifetime = 1.7
@@ -73,6 +118,65 @@ scale = Vector2(24.05509, 23.255505)
 position = Vector2(-325, 878)
 scale = Vector2(178.12207, 15.376825)
 
+[node name="Block9" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-868, 243)
+scale = Vector2(2.2626843, 11.038302)
+
+[node name="Block10" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-1602.0001, 587)
+scale = Vector2(5.3443446, 9.770324)
+
+[node name="Block11" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-1072.0001, 421.00006)
+rotation = -0.23341472
+scale = Vector2(6.1340127, 2.610326)
+
+[node name="Block12" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-1236, 453)
+rotation = -0.110985875
+scale = Vector2(5.3443446, 2.610326)
+
+[node name="Block13" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-1397, 466.99997)
+rotation = -0.07060202
+scale = Vector2(5.3443446, 2.610326)
+
+[node name="Block15" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-1654.0001, 471)
+scale = Vector2(9.144344, 2.610326)
+
+[node name="Block16" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-1804, 168)
+rotation = 1.5707964
+scale = Vector2(10.875843, 2.610326)
+
+[node name="Block17" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-991, -78)
+scale = Vector2(10.875843, 2.610326)
+
+[node name="Block19" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-1435, -444)
+scale = Vector2(10.875843, 2.610326)
+
+[node name="Block20" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-1856.0001, -624)
+scale = Vector2(10.875843, 2.610326)
+
+[node name="Block18" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-991.00006, -415)
+rotation = 1.5707964
+scale = Vector2(10.875843, 2.610326)
+
+[node name="Block22" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-988, -610)
+rotation = 3.1415927
+scale = Vector2(7.907679, 1.897933)
+
+[node name="Block14" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-1522.0001, 517.00006)
+rotation = -1.0228361
+scale = Vector2(5.3443446, 2.610326)
+
 [node name="Block4" parent="level_geom" instance=ExtResource("8_mhlpv")]
 position = Vector2(1458, -2089)
 rotation = 1.5707964
@@ -83,15 +187,40 @@ position = Vector2(-458, -1061)
 rotation = 1.5707964
 scale = Vector2(11.843904, 82.03876)
 
+[node name="Block23" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(130.00006, -4.9999924)
+rotation = 1.5707964
+scale = Vector2(-3.1621108, 25.619934)
+
+[node name="Block26" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-31.99999, -560.00006)
+rotation = 3.1415927
+scale = Vector2(-2.241929, 21.748674)
+
+[node name="Block27" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(191, -373.00003)
+rotation = 3.1415927
+scale = Vector2(-2.241929, 21.748674)
+
+[node name="Block24" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-230.99998, -287)
+rotation = 3.1415927
+scale = Vector2(-3.1049333, 20.76844)
+
+[node name="Block25" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-230.99998, -986.99994)
+rotation = 3.1415927
+scale = Vector2(-2.8361201, 13.013148)
+
 [node name="Block8" parent="level_geom" instance=ExtResource("8_mhlpv")]
 position = Vector2(-1194, -2722)
 rotation = 1.5707964
 scale = Vector2(12.083903, 81.918755)
 
 [node name="Block5" parent="level_geom" instance=ExtResource("8_mhlpv")]
-position = Vector2(49.000015, -4473)
+position = Vector2(-614.99994, -5275)
 rotation = 1.5707964
-scale = Vector2(33.454006, 140.40492)
+scale = Vector2(33.454006, 177.88492)
 
 [node name="Block6" parent="level_geom" instance=ExtResource("8_mhlpv")]
 position = Vector2(-2865, -1851.0001)
@@ -116,5 +245,118 @@ position = Vector2(-463, 634)
 [node name="Spike6" parent="level_geom" instance=ExtResource("9_ng020")]
 position = Vector2(-646, 634)
 
+[node name="Spike7" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-818, 634)
+
+[node name="Spike8" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-998, 634)
+
+[node name="Spike19" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-1445, -488)
+
+[node name="Spike24" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-2008, -1148)
+rotation = 1.5707964
+
+[node name="Spike25" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-1768, -1147)
+rotation = 1.5707964
+
+[node name="Spike20" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-1453, -409)
+rotation = 0.0027801024
+
+[node name="Block21" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-598.00006, -470)
+scale = Vector2(10.875843, 2.610326)
+
+[node name="Spike21" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-602, -514)
+
+[node name="Spike23" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-989, -639)
+scale = Vector2(1.0400048, 1)
+
+[node name="Spike22" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-610, -435)
+rotation = 0.0027801024
+
+[node name="Spike9" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-1175, 634)
+
+[node name="Spike11" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-1097, 379)
+rotation = -0.20203881
+
+[node name="Spike14" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-1266, 410.99997)
+rotation = -0.16454561
+
+[node name="Spike15" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-1427, 429.00003)
+rotation = -0.072627455
+
+[node name="Spike12" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-831, 170)
+rotation = 1.5707964
+
+[node name="Spike13" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-896.99994, 170)
+rotation = 1.5122371
+
+[node name="Spike10" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-1358, 634)
+
+[node name="Spike16" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-2007.9999, 547)
+rotation = 1.5311906
+
+[node name="Spike18" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-1840.9999, 98)
+rotation = 1.5311906
+
+[node name="Spike17" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-1688.0001, 597.00006)
+rotation = -1.518655
+
+[node name="Amethyst_Lift" type="Node2D" parent="level_geom"]
+position = Vector2(-1888, -708)
+
+[node name="Final_Position" type="Node2D" parent="level_geom/Amethyst_Lift"]
+
+[node name="Moving_Platform" type="CharacterBody2D" parent="level_geom/Amethyst_Lift"]
+scale = Vector2(6.538203, 1.36891)
+
+[node name="Sprite2D" type="Sprite2D" parent="level_geom/Amethyst_Lift/Moving_Platform"]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("12_mmf1u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_geom/Amethyst_Lift/Moving_Platform"]
+shape = SubResource("RectangleShape2D_r8hce")
+
 [node name="Falling_Block" parent="." instance=ExtResource("10_vn2uo")]
-position = Vector2(140, 424)
+position = Vector2(112, 428)
+
+[node name="Falling_Block2" parent="." instance=ExtResource("10_vn2uo")]
+position = Vector2(-372.99997, 409)
+
+[node name="Falling_Block3" parent="." instance=ExtResource("10_vn2uo")]
+position = Vector2(-862, 520)
+
+[node name="Falling_Block4" parent="." instance=ExtResource("10_vn2uo")]
+position = Vector2(-1423, -28)
+
+[node name="Checkpoint" parent="." instance=ExtResource("13_ukdoj")]
+position = Vector2(-1556, 350)
+
+[node name="Checkpoint3" parent="." instance=ExtResource("13_ukdoj")]
+position = Vector2(-236, -694)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("13_ukdoj")]
+position = Vector2(-993, -199)
+
+[node name="Worker_Ant" parent="." instance=ExtResource("11_mtqcm")]
+position = Vector2(-1926, 601)
+
+[node name="Amethyst" parent="." instance=ExtResource("13_vn460")]
+position = Vector2(288, -145)
