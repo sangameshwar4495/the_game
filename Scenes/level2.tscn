@@ -39,7 +39,8 @@ position = Vector2(459, 444)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("2_1apgh")]
+[node name="Pause_Menu" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("2_1apgh")]
+player = NodePath("../../Player")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Particle_fx") instance=ExtResource("3_ue4po")]
 position = Vector2(-1613, -1695)

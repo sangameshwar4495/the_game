@@ -7,7 +7,7 @@
 script/source = "extends Control
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var resume_: TextureButton = $CanvasLayer/VBoxContainer/Resume
-@export var PauseMenu: CanvasLayer
+#@export var PauseMenu: CanvasLayer
 
 func resume():
 	canvas_layer.visible = false
@@ -37,6 +37,16 @@ func _on_quit_menu_button_down() -> void:
 func _on_quit_game_button_down() -> void:
 	get_tree().quit()
 	
+
+func _on_restart_button_down() -> void:
+	resume()
+	get_tree().reload_current_scene()
+
+@export var player:Node2D
+func _on_restart_check_button_down() -> void:
+	player.respawn()
+	resume()
+
 #func _ready() -> void:
 	#await get_tree().process_frame
 	#resume()
@@ -47,7 +57,7 @@ func _process(delta: float) -> void:
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eh8hr"]
 shader = ExtResource("1_eh8hr")
-shader_parameter/intensity = 1.230000058425
+shader_parameter/intensity = 0.4550000216125
 shader_parameter/smoothness = 1.4830000704425
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
@@ -73,14 +83,17 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -183.0
-offset_top = 80.0
-offset_right = 185.0
-offset_bottom = 393.0
+anchor_bottom = 0.5
+offset_left = -258.25
+offset_top = -156.5
+offset_right = 258.25
+offset_bottom = 156.5
 grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(78, 0)
 alignment = 1
 
@@ -88,6 +101,16 @@ alignment = 1
 layout_mode = 2
 text = "Resume"
 arrow_margin_from_center = 65
+
+[node name="Restart" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_mlor7")]
+layout_mode = 2
+text = "Restart"
+arrow_margin_from_center = 71
+
+[node name="Restart_check" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_mlor7")]
+layout_mode = 2
+text = "Restart From last checkpoint"
+arrow_margin_from_center = 208
 
 [node name="Quit_Menu" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_mlor7")]
 layout_mode = 2
@@ -110,5 +133,7 @@ grow_vertical = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="button_down" from="CanvasLayer/VBoxContainer/Resume" to="." method="_on_resume_button_down"]
+[connection signal="button_down" from="CanvasLayer/VBoxContainer/Restart" to="." method="_on_restart_button_down"]
+[connection signal="button_down" from="CanvasLayer/VBoxContainer/Restart_check" to="." method="_on_restart_check_button_down"]
 [connection signal="button_down" from="CanvasLayer/VBoxContainer/Quit_Menu" to="." method="_on_quit_menu_button_down"]
 [connection signal="button_down" from="CanvasLayer/VBoxContainer/Quit_Game" to="." method="_on_quit_game_button_down"]

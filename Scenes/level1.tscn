@@ -5154,4 +5154,5 @@ flip_h = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("1_ybjcv")]
+[node name="Pause_Menu" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("1_ybjcv")]
+player = NodePath("../../Player")

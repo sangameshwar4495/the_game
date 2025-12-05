@@ -478,6 +478,19 @@ func distance_to_spawn():
 	var displacement_vector = current_spawn - $".".global_position 
 	return displacement_vector.length()
 
+func respawn():
+	global_position = current_spawn
+	stamina = max_stamina
+
+	var time := 0.2
+	if distance_to_spawn() > 15:
+		get_tree().paused = true
+		await get_tree().create_timer(time).timeout
+		get_tree().paused = false
+
+	set_physics_process(true)
+	set_process(true)
+	
 func die() -> void:
 	set_physics_process(false)
 	set_process(false)
@@ -490,15 +503,4 @@ func die() -> void:
 	play_sfx(die_audio_stream)
 
 	await get_tree().create_timer(0.35).timeout 
-
-	global_position = current_spawn
-	stamina = max_stamina
-
-	var time := 0.2
-	if distance_to_spawn() > 15:
-		get_tree().paused = true
-		await get_tree().create_timer(time).timeout
-		get_tree().paused = false
-
-	set_physics_process(true)
-	set_process(true)
+	respawn()
