@@ -52,8 +52,8 @@ func _on_restart_button_down() -> void:
 		get_tree().reload_current_scene()
 
 func _on_restart_check_button_down() -> void:
-	if player and player.has_method(\"respawn\"):
-		player.respawn()
+	#if player: #and player.has_method(\"respawn\"):
+	player.respawn()
 	resume()
 
 func _process(delta: float) -> void:
@@ -86,6 +86,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -115,7 +116,7 @@ arrow_margin_from_center = 71
 [node name="Restart_check" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_mlor7")]
 layout_mode = 2
 text = "load last checkpoint"
-arrow_margin_from_center = 208
+arrow_margin_from_center = 153
 
 [node name="Quit_Menu" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_mlor7")]
 layout_mode = 2
@@ -134,6 +135,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
