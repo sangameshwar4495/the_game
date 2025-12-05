@@ -37,6 +37,7 @@ var land_audio_stream = preload("res://assets/audio/land.wav")
 var die_audio_stream = preload("res://assets/audio/hurt.wav")
 
 var has_amethyst: bool = false
+var amethyst_node: Node = null
 
 var vel := Vector2.ZERO
 var axis := Vector2.ZERO
@@ -476,6 +477,7 @@ func die() -> void:
 	set_process(false)
 	
 	has_amethyst = false
+	amethyst_node = null
 
 	GameEvents.player_died.emit()
 
