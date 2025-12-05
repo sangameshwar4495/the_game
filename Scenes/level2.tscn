@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bkn5q7tc1ifuj"]
+[gd_scene load_steps=16 format=3 uid="uid://bkn5q7tc1ifuj"]
 
 [ext_resource type="PackedScene" uid="uid://bsktspv78ug47" path="res://assets/Particles/Jump.tscn" id="1_5qi50"]
 [ext_resource type="PackedScene" uid="uid://q1d7iycpesjo" path="res://assets/Prefab_kinda/Pause_Menu/controlPause.tscn" id="2_1apgh"]
 [ext_resource type="PackedScene" uid="uid://dprho8jmoqejn" path="res://assets/player/player.tscn" id="3_ue4po"]
 [ext_resource type="Script" uid="uid://dm6iobhc3btjl" path="res://assets/camera/camera_follow.gd" id="4_uoomo"]
+[ext_resource type="Texture2D" uid="uid://quaxt0o0ocs7" path="res://assets/sprites/ground.png" id="6_ca0bt"]
 [ext_resource type="PackedScene" uid="uid://ciaa83hid64qs" path="res://assets/level_prefabs/block.tscn" id="8_mhlpv"]
 [ext_resource type="PackedScene" uid="uid://bk3mvo1ti5trv" path="res://assets/level_prefabs/spike/spike.tscn" id="9_ng020"]
 [ext_resource type="PackedScene" uid="uid://doloo5sjofdey" path="res://assets/level_prefabs/amethyst_lift/amethyst_lift.tscn" id="9_vn460"]
@@ -16,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bugxwog3r3sve" path="res://assets/sprites/black.png" id="19_uv1om"]
 
 [node name="Node2D" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-932.0, -1842.0]
 
 [node name="Jump" parent="." instance=ExtResource("1_5qi50")]
 
@@ -27,7 +29,7 @@ position = Vector2(459, 444)
 [node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("2_1apgh")]
 
 [node name="Player" parent="." node_paths=PackedStringArray("Particle_fx") instance=ExtResource("3_ue4po")]
-position = Vector2(-237, -694)
+position = Vector2(-1940, -2399)
 Particle_fx = NodePath("../Jump")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -94,6 +96,45 @@ position = Vector2(-1079, -1932)
 [node name="Pollen19" parent="Interractables" instance=ExtResource("12_uvwjj")]
 position = Vector2(-1277, -2168)
 
+[node name="Pollen20" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-766, -2339)
+
+[node name="Pollen22" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-625, -3028)
+
+[node name="Pollen23" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-606, -3560)
+
+[node name="Pollen24" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-248, -3711)
+
+[node name="Pollen25" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-891, -3843)
+
+[node name="Pollen26" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-1458, -3826)
+
+[node name="Pollen27" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-1989, -4107)
+
+[node name="Pollen28" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-1135, -4597)
+
+[node name="Pollen29" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-589, -4606)
+
+[node name="Pollen30" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-113, -4602)
+
+[node name="Pollen21" parent="Interractables" instance=ExtResource("12_uvwjj")]
+position = Vector2(-351, -2130)
+
+[node name="Worker_Ant" parent="Interractables" instance=ExtResource("11_mtqcm")]
+position = Vector2(-971, -2974)
+
+[node name="Worker_Ant2" parent="Interractables" instance=ExtResource("11_mtqcm")]
+position = Vector2(-271, -2961)
+
 [node name="CPUParticles2D14" type="CPUParticles2D" parent="."]
 position = Vector2(-416, -821)
 emitting = false
@@ -115,12 +156,13 @@ scale_amount_min = 0.02
 scale_amount_max = 0.04
 
 [node name="level_geom" type="Node2D" parent="."]
+z_index = 4
 
 [node name="Block" parent="level_geom" instance=ExtResource("8_mhlpv")]
 position = Vector2(953, 652)
 
 [node name="Block3" parent="level_geom" instance=ExtResource("8_mhlpv")]
-position = Vector2(1253, 489)
+position = Vector2(933, 497.99997)
 scale = Vector2(24.05509, 23.255505)
 
 [node name="Block2" parent="level_geom" instance=ExtResource("8_mhlpv")]
@@ -187,9 +229,9 @@ rotation = 3.1415927
 scale = Vector2(7.907679, 1.897933)
 
 [node name="Block30" parent="level_geom" instance=ExtResource("8_mhlpv")]
-position = Vector2(-1628.0001, -1361)
-rotation = 4.712389
-scale = Vector2(9.23107, 1.9098262)
+position = Vector2(-1629, -1344)
+rotation = 3.1415927
+scale = Vector2(1.5571016, -8.362834)
 
 [node name="Block31" parent="level_geom" instance=ExtResource("8_mhlpv")]
 position = Vector2(-1348, -1776)
@@ -215,6 +257,16 @@ scale = Vector2(1.8799899, 4.0492334)
 position = Vector2(-1307.0001, -2230)
 rotation = 4.712389
 scale = Vector2(1.8799821, 2.8092334)
+
+[node name="Block46" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-59, -2891)
+rotation = 4.712389
+scale = Vector2(2.4545195, 2.021566)
+
+[node name="Block47" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-1179, -2894)
+rotation = 4.712389
+scale = Vector2(2.4545195, 2.021566)
 
 [node name="Block37" parent="level_geom" instance=ExtResource("8_mhlpv")]
 position = Vector2(-917, -2259)
@@ -256,6 +308,11 @@ position = Vector2(-1949, -2139)
 rotation = 7.853982
 scale = Vector2(2.1586142, 30.656189)
 
+[node name="Block44" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-1485, -2168)
+rotation = 7.853982
+scale = Vector2(-3.3388124, 1.6628027)
+
 [node name="Block14" parent="level_geom" instance=ExtResource("8_mhlpv")]
 position = Vector2(-1522.0001, 517.00006)
 rotation = -1.0228361
@@ -265,6 +322,11 @@ scale = Vector2(5.3443446, 2.610326)
 position = Vector2(1458, -2089)
 rotation = 1.5707964
 scale = Vector2(151.75955, 68.821915)
+
+[node name="Block49" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(1082, -4615)
+rotation = 1.5707964
+scale = Vector2(13.885393, 34.391632)
 
 [node name="Block7" parent="level_geom" instance=ExtResource("8_mhlpv")]
 position = Vector2(-458, -1061)
@@ -302,9 +364,34 @@ rotation = 4.712389
 scale = Vector2(-6.7552032, 20.08794)
 
 [node name="Block8" parent="level_geom" instance=ExtResource("8_mhlpv")]
-position = Vector2(-1194, -2722)
+position = Vector2(-587.00006, -2852.9998)
 rotation = 1.5707964
-scale = Vector2(12.083903, 81.918755)
+scale = Vector2(4.0439005, 43.998753)
+
+[node name="Block50" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-907.00006, -3224.0002)
+rotation = 1.5707964
+scale = Vector2(12.573345, 2.75492)
+
+[node name="Block52" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-247, -3512.9998)
+rotation = 1.5707964
+scale = Vector2(10.606362, 2.9975007)
+
+[node name="Block51" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(208, -3696.9998)
+rotation = 1.5707964
+scale = Vector2(-2.1439373, 10.962366)
+
+[node name="Block48" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(-406.99997, -4091)
+rotation = 1.5707964
+scale = Vector2(5.631308, 83.54833)
+
+[node name="Block45" parent="level_geom" instance=ExtResource("8_mhlpv")]
+position = Vector2(68, -2297)
+rotation = 1.5707964
+scale = Vector2(38.67227, 3.0421681)
 
 [node name="Block5" parent="level_geom" instance=ExtResource("8_mhlpv")]
 position = Vector2(-614.99994, -5275)
@@ -343,16 +430,8 @@ position = Vector2(-998, 634)
 [node name="Spike19" parent="level_geom" instance=ExtResource("9_ng020")]
 position = Vector2(-1445, -488)
 
-[node name="Spike24" parent="level_geom" instance=ExtResource("9_ng020")]
-position = Vector2(-2011, -1148)
-rotation = 1.5707964
-
-[node name="Spike25" parent="level_geom" instance=ExtResource("9_ng020")]
-position = Vector2(-1768, -1147)
-rotation = 1.5707964
-
 [node name="Spike26" parent="level_geom" instance=ExtResource("9_ng020")]
-position = Vector2(-1665, -1241.0001)
+position = Vector2(-1657, -1240.9999)
 rotation = 3.1429825
 
 [node name="Spike27" parent="level_geom" instance=ExtResource("9_ng020")]
@@ -397,9 +476,68 @@ position = Vector2(-483.00012, -2076)
 rotation = 3.1295652
 scale = Vector2(1.1599853, 1)
 
+[node name="Spike48" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-124.999985, -2918)
+rotation = 3.1295652
+scale = Vector2(1.1599853, 1)
+
+[node name="Spike49" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-1159, -2916.9998)
+rotation = 3.143631
+scale = Vector2(1.1599853, 1)
+
+[node name="Spike50" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-624.00006, -2917)
+rotation = 3.1295652
+scale = Vector2(1.1599853, 1)
+
 [node name="Spike31" parent="level_geom" instance=ExtResource("9_ng020")]
 position = Vector2(-766, -1248)
 rotation = 3.1345267
+
+[node name="Spike38" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-1074, -4176.9995)
+rotation = 3.0999842
+
+[node name="Spike51" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-1256, -4175)
+rotation = 3.141151
+
+[node name="Spike47" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-1437.0001, -4177.0005)
+rotation = 3.1277065
+
+[node name="Spike39" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-351, -4181.9995)
+rotation = 3.1709146
+
+[node name="Spike40" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-170.99985, -4183)
+rotation = 3.1382802
+
+[node name="Spike44" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(11.999985, -4181)
+rotation = 3.142737
+
+[node name="Spike45" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(185.00002, -4180)
+rotation = 3.1338294
+
+[node name="Spike46" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(361, -4184.9995)
+rotation = 3.1050558
+
+[node name="Spike41" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-887, -4179.9995)
+rotation = 3.1709146
+
+[node name="Spike42" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-706.9999, -4181)
+rotation = 3.1382802
+
+[node name="Spike43" parent="level_geom" instance=ExtResource("9_ng020")]
+position = Vector2(-531, -4181.9995)
+rotation = 3.162459
 
 [node name="Spike20" parent="level_geom" instance=ExtResource("9_ng020")]
 position = Vector2(-1453, -409)
@@ -459,40 +597,1506 @@ position = Vector2(-1688.0001, 597.00006)
 rotation = -1.518655
 
 [node name="Amethyst_Lift" parent="level_geom" instance=ExtResource("9_vn460")]
+z_index = 4
 position = Vector2(-1888, -708)
 lift_height = -800.0
+lift_speed = 320.0
+
+[node name="Amethyst_Lift3" parent="level_geom" instance=ExtResource("9_vn460")]
+z_index = 4
+position = Vector2(-1870, -3755)
+lift_height = -800.0
+lift_speed = 320.0
 
 [node name="Amethyst_Lift2" parent="level_geom" instance=ExtResource("9_vn460")]
+z_index = 3
 position = Vector2(246, -1442)
-lift_height = -800.0
+lift_height = -1454.0
+lift_speed = 420.0
 
-[node name="Falling_Block" parent="." instance=ExtResource("10_vn2uo")]
+[node name="Ground72" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(422.99994, 528.0005)
+rotation = -3.1415925
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground74" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(428, 327)
+rotation = 3.1077342
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground75" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(369.99997, 262)
+rotation = 4.7092543
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground76" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(369, 92.000015)
+rotation = 4.6343427
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground77" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(305, 35)
+rotation = 3.165959
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground78" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-211, 33.000004)
+rotation = 3.101782
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground112" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-142.00002, -41)
+rotation = 3.2117958
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground113" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-197, -95)
+rotation = 4.684105
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground114" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(168, -102)
+rotation = 4.7674065
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground115" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(103, -43)
+rotation = 6.2002645
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground116" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(276, -45)
+rotation = 6.2876897
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground118" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(308, -44)
+rotation = 6.233186
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground119" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(370, -113.00001)
+rotation = 4.741366
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground120" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(368.99997, -825)
+rotation = 4.6290627
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground121" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(306, -883)
+rotation = 3.16072
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground122" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(56, -884)
+rotation = 3.0687456
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground123" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-14.999996, -832)
+rotation = 4.772523
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground124" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-55, -830)
+rotation = 4.60975
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground125" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-116.99999, -885)
+rotation = 3.20427
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground126" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-158.00002, -886.00006)
+rotation = 3.0039415
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground202" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-2020, -2048)
+rotation = 1.5931827
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground203" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1955.9999, -2117)
+rotation = 3.0602348
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground204" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1956.0001, -2156.0002)
+rotation = 3.2128026
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground205" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-2026, -2225)
+rotation = 4.688075
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground206" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1555.0001, -2157)
+rotation = 3.0870981
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground228" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1000, -2242)
+rotation = 3.0870981
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground229" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-813.0001, -2242)
+rotation = 3.1367106
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground217" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1315, -1739.9999)
+rotation = 1.6000302
+scale = Vector2(1.1144738, 1.0250833)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground218" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1348.9999, -1725)
+rotation = 1.5563275
+scale = Vector2(1.1144738, 1.0250833)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground219" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1349, -1797)
+rotation = 3.146083
+scale = Vector2(0.72898, 0.67050946)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground220" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1350.9999, -1748.9999)
+rotation = 3.2322526
+scale = Vector2(0.72898, 0.67050946)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground221" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1333.9999, -1662.0001)
+rotation = 3.1307876
+scale = Vector2(0.49509156, 0.4553809)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground222" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1388.0001, -1777)
+rotation = 4.712389
+scale = Vector2(0.49509156, 0.4553809)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground223" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1017.3385, -1957.6753)
+rotation = 1.6000302
+scale = Vector2(1.1144738, 1.0250833)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground224" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1051.3384, -1942.6754)
+rotation = 1.5563275
+scale = Vector2(1.1144738, 1.0250833)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground225" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1051.3385, -2014.6754)
+rotation = 3.146083
+scale = Vector2(0.72898, 0.67050946)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground226" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1053.3384, -1966.6753)
+rotation = 3.2322526
+scale = Vector2(0.72898, 0.67050946)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground227" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1090.3386, -1994.6754)
+rotation = 4.712389
+scale = Vector2(0.49509156, 0.4553809)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground207" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1529.9999, -2118)
+rotation = 3.1348445
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground208" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1466, -2167.0002)
+rotation = 1.5255274
+scale = Vector2(0.9158239, 0.8423669)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground211" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1342, -2205.0002)
+rotation = 4.6342587
+scale = Vector2(0.9158239, 0.8423669)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground212" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1305, -2185.0002)
+rotation = 4.734405
+scale = Vector2(0.9158239, 0.8423669)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground213" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1296.9999, -2253)
+rotation = 6.21532
+scale = Vector2(0.60866994, 0.5598493)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground214" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1266, -2231)
+rotation = 7.833659
+scale = Vector2(0.49080044, 0.451434)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground230" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1066.0001, -2270)
+rotation = 7.833659
+scale = Vector2(0.6476561, 0.5957085)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground231" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1041, -2303.0002)
+rotation = 9.42327
+scale = Vector2(0.5823583, 0.53564817)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground232" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-769, -2304.0002)
+rotation = 9.42327
+scale = Vector2(0.5823583, 0.53564817)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground233" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-743, -2271.0002)
+rotation = 11.028201
+scale = Vector2(0.5823583, 0.53564817)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground234" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-582.29004, -2032.874)
+rotation = 3.0870981
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground240" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-74.00001, -1399.9998)
+rotation = 3.1943734
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground241" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(314.00003, -1404)
+rotation = 3.0717347
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground242" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(373.00003, -1467.0001)
+rotation = 1.673879
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground243" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(302, -4014)
+rotation = 3.1718843
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground244" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(370, -3960.0002)
+rotation = 4.6565666
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground245" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(369.99997, -3786.0002)
+rotation = 4.748059
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground273" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1731, -4111.0005)
+rotation = 4.6281533
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground274" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1667.0001, -4169)
+rotation = 6.2737536
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground246" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(311, -3718.9998)
+rotation = 6.2225738
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground247" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(321.00003, -3674.9998)
+rotation = 3.1435895
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground248" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(369.99997, -3624)
+rotation = 4.6454477
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground249" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(105.000015, -3677)
+rotation = 3.061359
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground250" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(104.999985, -3713)
+rotation = 3.221708
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground252" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-217.00002, -3611)
+rotation = 4.767036
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground253" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-283, -3609)
+rotation = 4.638414
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground264" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1283, -2854)
+rotation = 4.6787376
+scale = Vector2(1.1152458, 1.0257933)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground265" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1222, -2802)
+rotation = 3.0629983
+scale = Vector2(1.1152458, 1.0257933)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground266" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-35.000004, -2800.0002)
+rotation = 3.1478918
+scale = Vector2(1.1152458, 1.0257933)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground267" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(29.000025, -2750)
+rotation = 4.606065
+scale = Vector2(1.1152458, 1.0257933)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground268" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(106.00001, -2853)
+rotation = 7.8867297
+scale = Vector2(1.1152458, 1.0257933)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground270" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(104.99999, -1742.9999)
+rotation = 7.791432
+scale = Vector2(1.1152458, 1.0257933)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground271" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(34, -1741.9999)
+rotation = 7.901031
+scale = Vector2(1.1152458, 1.0257933)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground272" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(65, -1685)
+rotation = 9.398425
+scale = Vector2(0.7661336, 0.704683)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground269" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(45.999954, -2907.0002)
+rotation = 6.245955
+scale = Vector2(1.1152458, 1.0257933)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground254" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-282.99997, -3417.0002)
+rotation = 4.727439
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground255" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-213, -3416)
+rotation = 7.7554
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground258" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-875, -3351)
+rotation = 7.8583007
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground259" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-937, -3354)
+rotation = 10.934217
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground260" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-936, -3097.0002)
+rotation = 10.997742
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground261" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-877.00006, -3097)
+rotation = 14.062384
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground251" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(39, -3697.9998)
+rotation = 4.7029095
+scale = Vector2(0.59552366, 0.54775745)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground256" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-243, -3673.9998)
+rotation = 6.242293
+scale = Vector2(0.7862657, 0.7232003)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground262" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-905, -3417)
+rotation = 6.242293
+scale = Vector2(0.7862657, 0.7232003)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground263" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-908, -3031)
+rotation = 3.1065764
+scale = Vector2(0.7862657, 0.7232003)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground257" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-247, -3353)
+rotation = 6.3051214
+scale = Vector2(0.7862657, 0.7232003)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground235" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-395.2901, -2032.874)
+rotation = 3.1367106
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground236" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-648.2901, -2060.874)
+rotation = 7.833659
+scale = Vector2(0.6476561, 0.5957085)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground237" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-623.29, -2093.8743)
+rotation = 9.42327
+scale = Vector2(0.5823583, 0.53564817)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground238" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-351.28998, -2094.8743)
+rotation = 9.42327
+scale = Vector2(0.5823583, 0.53564817)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground239" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-325.29, -2061.8743)
+rotation = 11.028201
+scale = Vector2(0.5823583, 0.53564817)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground215" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1290, -2204)
+rotation = 9.298887
+scale = Vector2(0.49080044, 0.451434)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground216" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1323, -2133)
+rotation = 9.412837
+scale = Vector2(0.49080044, 0.451434)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground209" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1499.0001, -2167)
+rotation = 1.5947962
+scale = Vector2(0.9158239, 0.8423669)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground210" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1484, -2216)
+rotation = 3.1694329
+scale = Vector2(0.41079253, 0.3778434)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground127" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-318.00003, -889)
+rotation = 0.0839624
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground128" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-262, -854)
+rotation = 1.5520808
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground129" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-198, -855.00006)
+rotation = 1.5755783
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground130" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-231, -785.99994)
+rotation = 3.099544
+scale = Vector2(0.76165986, 0.70056814)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground131" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-231.99998, -609)
+rotation = 3.1217916
+scale = Vector2(0.8361826, 0.7691134)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground140" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-917, -589.00006)
+rotation = 3.0762267
+scale = Vector2(0.8361826, 0.7691134)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground141" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-958.99994, -543)
+rotation = 1.6072955
+scale = Vector2(0.8361826, 0.7691134)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground142" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1021.00006, -545)
+rotation = 1.5293869
+scale = Vector2(0.8361826, 0.7691134)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground143" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1059, -587.00006)
+rotation = 3.162911
+scale = Vector2(0.8361826, 0.7691134)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground144" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-990.99994, -248.00002)
+rotation = 3.1268086
+scale = Vector2(0.7169792, 0.6594712)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground145" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-957, -288.00003)
+rotation = 1.5007983
+scale = Vector2(0.7169792, 0.6594712)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground146" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1022.00006, -284)
+rotation = 1.6092414
+scale = Vector2(0.7169792, 0.6594712)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground147" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1267.9999, -443.99997)
+rotation = 1.5638021
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground148" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1308, -480.00003)
+rotation = 0.0062690526
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground153" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-857.99994, -113.00001)
+rotation = -0.039726675
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground154" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1123, -113)
+rotation = 0.007935982
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground174" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1201, -879)
+rotation = 0.030431721
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground175" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1125.9999, -878.99994)
+rotation = -0.030910954
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground176" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1050.0001, -882.00006)
+rotation = -0.06572991
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground177" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1273, -880.99994)
+rotation = 0.050425
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground178" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1064.4697, -2796.9963)
+rotation = 0.041040286
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground179" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-989.4696, -2796.9963)
+rotation = -0.02030239
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground180" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-913.46985, -2799.9963)
+rotation = -0.055121347
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground181" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1136.4697, -2798.996)
+rotation = 0.06103356
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground182" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-583.4698, -2796.9963)
+rotation = 0.041040286
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground183" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-508.46967, -2796.9963)
+rotation = -0.02030239
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground184" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-432.46997, -2799.9963)
+rotation = -0.055121347
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground185" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-655.4698, -2798.996)
+rotation = 0.06103356
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground186" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1625.4697, -4006.9968)
+rotation = 0.041040286
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground187" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1550.4695, -4006.9968)
+rotation = -0.02030239
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground188" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1474.4697, -4009.9963)
+rotation = -0.055121347
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground189" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1697.4697, -4008.9963)
+rotation = 0.06103356
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground190" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-802.4698, -4006.9968)
+rotation = 0.041040286
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground191" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-727.46954, -4006.9968)
+rotation = -0.02030239
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground192" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-651.4699, -4009.9963)
+rotation = -0.055121347
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground193" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-874.4698, -4008.9963)
+rotation = 0.06103356
+scale = Vector2(0.7401971, 0.68082684)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground155" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1156, -78.99999)
+rotation = 1.5554577
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground156" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1122, -43.999996)
+rotation = -3.1761355
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground157" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-858.0001, -44.000004)
+rotation = -3.1223407
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground158" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-824.00006, -76)
+rotation = -4.74947
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground149" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1312.0001, -413)
+rotation = -0.0092424955
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground150" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1568.0001, -410)
+rotation = -3.1371915
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground151" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1568, -477)
+rotation = -3.1460302
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground152" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1598.9999, -444.99994)
+rotation = -4.6910152
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground159" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-430.55212, -469.23062)
+rotation = 1.5638021
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground160" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-470.5523, -505.23068)
+rotation = 0.0062690526
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground161" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-474.5525, -438.23065)
+rotation = -0.0092424955
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground162" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-730.55237, -435.23065)
+rotation = -3.1371915
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground163" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-730.55225, -502.23065)
+rotation = -3.1460302
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground164" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-761.5521, -470.2306)
+rotation = -4.6910152
+scale = Vector2(0.7061882, 0.6495457)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground132" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-193.99998, -568)
+rotation = 4.771723
+scale = Vector2(0.8361826, 0.7691134)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground133" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-272, -568)
+rotation = 4.6136746
+scale = Vector2(0.8361826, 0.7691134)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground134" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-60, -261)
+rotation = 4.7319226
+scale = Vector2(0.8361826, 0.7691134)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground135" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-6.999999, -260.00003)
+rotation = 4.652922
+scale = Vector2(0.8361826, 0.7691134)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground136" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-32, -220)
+rotation = 6.3082485
+scale = Vector2(0.5623096, 0.5172075)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground137" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(190.99998, -716)
+rotation = 6.263278
+scale = Vector2(0.6024352, 0.5707901)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground138" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(220, -685.99994)
+rotation = 7.865303
+scale = Vector2(0.6024352, 0.5707901)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground139" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(164, -684)
+rotation = 7.8222313
+scale = Vector2(0.6024352, 0.5707901)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground117" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(213, -101.00001)
+rotation = 7.7686286
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground79" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-268, -26.999998)
+rotation = 4.716473
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground165" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1698, -883.99994)
+rotation = 3.092388
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground166" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1757, -948)
+rotation = 4.709629
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground194" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1640, -1307.9999)
+rotation = 4.709629
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground195" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1642.0001, -1421)
+rotation = 4.5852356
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground196" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1622, -1427)
+rotation = 4.780308
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground197" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1618, -1305)
+rotation = 7.721743
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground198" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1573.0001, -1480)
+rotation = 9.353334
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground199" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1679, -1475)
+rotation = 9.469125
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground200" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1681.0001, -1510)
+rotation = 9.433246
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground201" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1574.9999, -1511.0001)
+rotation = 9.412022
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground167" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1755, -655)
+rotation = 6.1913276
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground168" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1946.9999, -653.99994)
+rotation = 6.310477
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground169" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-2018.0002, -712)
+rotation = 7.7361746
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground170" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-2021.0001, -531)
+rotation = 7.881291
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground171" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1951, -592.99994)
+rotation = 9.327236
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground172" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1755.9999, -595.00006)
+rotation = 9.436909
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground173" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1688.9999, -625.00006)
+rotation = 7.822727
+scale = Vector2(0.6974362, 0.64149576)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground80" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(1.1920929e-07, 32)
+rotation = 3.144393
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground81" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(127, 33)
+rotation = 3.0898762
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground82" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-869, 79.00001)
+rotation = 3.110944
+scale = Vector2(0.6651671, 0.92185515)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground83" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-869.0001, 411)
+rotation = 3.145853
+scale = Vector2(0.6651671, 0.92185515)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground84" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-842, 381)
+rotation = 1.4974686
+scale = Vector2(0.6651671, 0.92185515)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground85" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-891.00006, 377)
+rotation = 1.648388
+scale = Vector2(0.6651671, 0.92185515)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground86" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-987, 398.99994)
+rotation = -1.7503276
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground87" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1010.00006, 436)
+rotation = -0.1876825
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground97" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1052, 445)
+rotation = -0.24100658
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground88" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1154.0001, 474.00003)
+rotation = -0.17538546
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground89" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1094, 457.00003)
+rotation = -0.3092921
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground90" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1224.9999, 483.99997)
+rotation = -0.10520027
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground91" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1294.0001, 489.00006)
+rotation = -0.052871555
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground92" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1359.9999, 491.99997)
+rotation = -0.029794637
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground93" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1444, 499.00003)
+rotation = -0.16557717
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground98" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1757.0001, 433.00003)
+rotation = 0.0010995865
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground99" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1692, 437.00003)
+rotation = 0.049948834
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground100" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1785.0001, 466)
+rotation = 1.5429645
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground105" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1838, 301.00003)
+rotation = 1.5816091
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground106" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1835.0001, 231.00006)
+rotation = 1.5816091
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground107" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1771, 300)
+rotation = 1.4919746
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground109" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1774, 230)
+rotation = 1.4714588
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground110" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1772.9999, 36.000008)
+rotation = 1.6188661
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground111" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1807.0001, 1.9999986)
+rotation = -0.0442831
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground108" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1804, 330)
+rotation = -0.026450038
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground101" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-2016, 593)
+rotation = 1.4194342
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground102" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1982.0001, 636.99994)
+rotation = 0.0969583
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground103" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1730.9998, 640)
+rotation = -0.11272146
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground104" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1680, 605.0001)
+rotation = -1.2954175
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground94" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1496, 534.9999)
+rotation = -0.9613035
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground95" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1528, 630.00006)
+rotation = -1.6072733
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground96" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(-1524, 577.00006)
+rotation = -1.2012188
+scale = Vector2(0.72489727, 0.8955641)
+texture = ExtResource("6_ca0bt")
+
+[node name="Ground73" type="Sprite2D" parent="level_geom"]
+z_index = 3
+position = Vector2(368, 589)
+rotation = 1.5830605
+scale = Vector2(1.2502836, 1.15)
+texture = ExtResource("6_ca0bt")
+
+[node name="Falling_Block" parent="level_geom" instance=ExtResource("10_vn2uo")]
 position = Vector2(112, 428)
 
-[node name="Falling_Block2" parent="." instance=ExtResource("10_vn2uo")]
+[node name="Falling_Block2" parent="level_geom" instance=ExtResource("10_vn2uo")]
 position = Vector2(-372.99997, 409)
 
-[node name="Falling_Block3" parent="." instance=ExtResource("10_vn2uo")]
+[node name="Falling_Block5" parent="level_geom" instance=ExtResource("10_vn2uo")]
+position = Vector2(-1399, -4524)
+
+[node name="Falling_Block6" parent="level_geom" instance=ExtResource("10_vn2uo")]
+position = Vector2(-885, -4507)
+
+[node name="Falling_Block7" parent="level_geom" instance=ExtResource("10_vn2uo")]
+position = Vector2(-378, -4516)
+
+[node name="Falling_Block8" parent="level_geom" instance=ExtResource("10_vn2uo")]
+position = Vector2(70, -4520)
+
+[node name="Falling_Block3" parent="level_geom" instance=ExtResource("10_vn2uo")]
 position = Vector2(-862, 520)
 
-[node name="Falling_Block4" parent="." instance=ExtResource("10_vn2uo")]
+[node name="Falling_Block4" parent="level_geom" instance=ExtResource("10_vn2uo")]
 position = Vector2(-1423, -28)
 
-[node name="Checkpoint" parent="." instance=ExtResource("13_ukdoj")]
+[node name="Falling_Block9" parent="level_geom" instance=ExtResource("10_vn2uo")]
+position = Vector2(-608, -3509)
+
+[node name="Falling_Block10" parent="level_geom" instance=ExtResource("10_vn2uo")]
+position = Vector2(-609, -3758)
+
+[node name="Falling_Block11" parent="level_geom" instance=ExtResource("10_vn2uo")]
+position = Vector2(-1160, -3753)
+
+[node name="Checkpoint" parent="level_geom" instance=ExtResource("13_ukdoj")]
 position = Vector2(-1556, 350)
 
-[node name="Checkpoint3" parent="." instance=ExtResource("13_ukdoj")]
-position = Vector2(-236, -694)
-
-[node name="Checkpoint2" parent="." instance=ExtResource("13_ukdoj")]
+[node name="Checkpoint2" parent="level_geom" instance=ExtResource("13_ukdoj")]
 position = Vector2(-993, -199)
 
-[node name="Checkpoint4" parent="." instance=ExtResource("13_ukdoj")]
+[node name="Checkpoint4" parent="level_geom" instance=ExtResource("13_ukdoj")]
 position = Vector2(-1740, -1607)
 
-[node name="Worker_Ant" parent="." instance=ExtResource("11_mtqcm")]
+[node name="Checkpoint5" parent="level_geom" instance=ExtResource("13_ukdoj")]
+position = Vector2(66, -2996)
+
+[node name="Checkpoint6" parent="level_geom" instance=ExtResource("13_ukdoj")]
+position = Vector2(132, -3813)
+
+[node name="Checkpoint7" parent="level_geom" instance=ExtResource("13_ukdoj")]
+position = Vector2(-1897, -4645)
+
+[node name="Worker_Ant" parent="level_geom" instance=ExtResource("11_mtqcm")]
 position = Vector2(-1926, 601)
 
-[node name="Amethyst" parent="." instance=ExtResource("13_vn460")]
+[node name="Amethyst" parent="level_geom" instance=ExtResource("13_vn460")]
 position = Vector2(290, -141)
+script = ExtResource("14_r8hce")
+
+[node name="Amethyst2" parent="." instance=ExtResource("13_vn460")]
+position = Vector2(-1948, -2219)
+script = ExtResource("14_r8hce")
+
+[node name="Amethyst3" parent="." instance=ExtResource("13_vn460")]
+position = Vector2(206, -3761)
 script = ExtResource("14_r8hce")

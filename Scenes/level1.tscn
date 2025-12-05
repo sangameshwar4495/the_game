@@ -3322,13 +3322,6 @@ rotation = 3.1091294
 scale = Vector2(1.2502836, 1.15)
 texture = ExtResource("13_880tf")
 
-[node name="Ground283" type="Sprite2D" parent="Node2D"]
-z_index = 3
-position = Vector2(-365.99997, 1631)
-rotation = 3.279837
-scale = Vector2(0.8656035, 0.7961745)
-texture = ExtResource("13_880tf")
-
 [node name="Ground71" type="Sprite2D" parent="Node2D"]
 z_index = 3
 position = Vector2(-221.84357, 1612.127)
