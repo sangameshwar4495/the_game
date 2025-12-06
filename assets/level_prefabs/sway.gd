@@ -1,11 +1,19 @@
 extends Node2D
 
-@export var sway_amount: float = 8.0      # how far left/right
-@export var sway_speed: float = 1.5       # how fast the wind moves
-@export var sway_offset: float = 0.0      # set different per vine for variation
+@export var rot_amplitude := 6.0
+@export var rot_speed := 3.0
+
+@export var bob_amplitude := 4.0
+@export var bob_speed := 3.0
 
 var t := 0.0
+var base_pos: Vector2
+
+func _ready() -> void:
+	base_pos = position
 
 func _process(delta: float) -> void:
-	t += delta * sway_speed
-	rotation = sin(t + sway_offset) * deg_to_rad(sway_amount)
+	t += delta
+
+	rotation_degrees = sin(t * rot_speed) * rot_amplitude
+	position.y = base_pos.y + sin(t * bob_speed) * bob_amplitude

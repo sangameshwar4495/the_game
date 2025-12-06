@@ -1,23 +1,52 @@
-[gd_scene load_steps=5 format=3 uid="uid://0cu7m2ujsoi1"]
+[gd_scene load_steps=7 format=3 uid="uid://0cu7m2ujsoi1"]
 
 [ext_resource type="Texture2D" uid="uid://d24emgns8mtm2" path="res://assets/sprites/white.png" id="1_ixxq3"]
-[ext_resource type="Script" uid="uid://dvq1k8lvnx4cx" path="res://assets/level_prefabs/amethyst/Amethyst.gd" id="1_u0xpg"]
+[ext_resource type="Script" uid="uid://ctbbxhmmnmexc" path="res://assets/level_prefabs/amethyst/amethyst.gd" id="1_u0xpg"]
+[ext_resource type="Texture2D" uid="uid://c0cbi6kcarsg5" path="res://assets/sprites/crystal_collect.png" id="2_3f4y1"]
 [ext_resource type="AudioStream" uid="uid://bmpl64qd7aj12" path="res://assets/audio/wall_jump.wav" id="3_3f4y1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn460"]
-size = Vector2(50, 50)
+[sub_resource type="Curve" id="Curve_cuupr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5639535, 0), -1.6233711, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmf1u"]
+size = Vector2(45, 45)
 
 [node name="Amethyst" type="Node2D"]
 script = ExtResource("1_u0xpg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.7507346, 0.1866903, 0.75675195, 1)
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 12
 texture = ExtResource("1_ixxq3")
+lifetime = 0.9
+speed_scale = 0.57
+explosiveness = 0.28
+randomness = 0.21
+use_fixed_seed = true
+seed = 1507804800
+emission_shape = 1
+emission_sphere_radius = 10.24
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+angle_max = 148.5
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_cuupr")
+color = Color(0.90136266, 0.6007801, 0.82580024, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_vn460")
+shape = SubResource("RectangleShape2D_mmf1u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.6818715, 0.4118515, 0.7337784, 1)
+scale = Vector2(0.28864244, 0.28864244)
+texture = ExtResource("2_3f4y1")
 
 [node name="CollectSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_3f4y1")
+pitch_scale = 1.75

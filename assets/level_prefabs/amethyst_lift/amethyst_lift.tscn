@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://doloo5sjofdey"]
+
+[ext_resource type="Texture2D" uid="uid://d24emgns8mtm2" path="res://assets/sprites/white.png" id="1_rwufv"]
+[ext_resource type="Script" uid="uid://176x8orip5sb" path="res://assets/level_prefabs/amethyst_lift/amethyst_lift.gd" id="1_w6muw"]
+[ext_resource type="Texture2D" uid="uid://cbbiti1201cs0" path="res://assets/sprites/cystal.png" id="2_jnnce"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8hce"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6muw"]
+size = Vector2(210, 16)
+
+[node name="Amethyst_Lift" type="Node2D"]
+script = ExtResource("1_w6muw")
+
+[node name="Moving_Platform" type="CharacterBody2D" parent="."]
+scale = Vector2(8.498202, 1.36891)
+
+[node name="Sprite2D" type="Sprite2D" parent="Moving_Platform"]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("1_rwufv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Moving_Platform"]
+shape = SubResource("RectangleShape2D_r8hce")
+
+[node name="Cystal" type="Sprite2D" parent="Moving_Platform"]
+modulate = Color(0.68701464, 0.3208525, 0.6928558, 1)
+z_index = -2
+position = Vector2(13.061585, -46.752525)
+rotation = 0.9531213
+scale = Vector2(0.025526196, 0.091835864)
+skew = -0.9166125
+texture = ExtResource("2_jnnce")
+
+[node name="Cystal2" type="Sprite2D" parent="Moving_Platform"]
+modulate = Color(0.68701464, 0.3208525, 0.6928558, 1)
+z_index = -2
+position = Vector2(-12.4732275, -40.90846)
+rotation = -0.5507497
+scale = Vector2(0.014776534, 0.078178436)
+skew = 0.53481567
+texture = ExtResource("2_jnnce")
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -22)
+scale = Vector2(0.99533904, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_w6muw")

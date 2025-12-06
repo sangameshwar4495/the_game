@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://c2spc5wsoic1"]
+[gd_scene load_steps=31 format=3 uid="uid://c2spc5wsoic1"]
 
 [ext_resource type="PackedScene" uid="uid://bsktspv78ug47" path="res://assets/Particles/Jump.tscn" id="1_dvjuv"]
+[ext_resource type="Script" uid="uid://dxcl00dp5j7bn" path="res://Scenes/Game_manager.gd" id="1_icduq"]
 [ext_resource type="PackedScene" uid="uid://q1d7iycpesjo" path="res://assets/Prefab_kinda/Pause_Menu/controlPause.tscn" id="1_ybjcv"]
 [ext_resource type="PackedScene" uid="uid://dprho8jmoqejn" path="res://assets/player/player.tscn" id="2_ybjcv"]
 [ext_resource type="Texture2D" uid="uid://d24emgns8mtm2" path="res://assets/sprites/white.png" id="3_8xidb"]
@@ -14,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cvku1me4whylh" path="res://assets/level_prefabs/Checkpoint/checkpoint.tscn" id="10_66ky8"]
 [ext_resource type="PackedScene" uid="uid://ctrl7ma3y2b0k" path="res://assets/level_prefabs/pollen/pollen.tscn" id="11_dyvnm"]
 [ext_resource type="Texture2D" uid="uid://quaxt0o0ocs7" path="res://assets/sprites/ground.png" id="13_880tf"]
+[ext_resource type="PackedScene" uid="uid://ffcsr1khfugb" path="res://assets/level_prefabs/world_environment.tscn" id="13_tlxhh"]
 [ext_resource type="Texture2D" uid="uid://dd8dvs3f67af5" path="res://assets/sprites/st_5.png" id="14_e074f"]
 [ext_resource type="Texture2D" uid="uid://cfxdldw7uw2sq" path="res://assets/sprites/st_3.png" id="15_huosi"]
 [ext_resource type="Texture2D" uid="uid://dfpljxhyqriot" path="res://assets/sprites/st_2.png" id="17_pfp4v"]
@@ -21,7 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://b5fr2ehdvu5du" path="res://assets/sprites/branch_2.png" id="21_fxw2b"]
 [ext_resource type="Texture2D" uid="uid://cajf6x4pb1nkj" path="res://assets/sprites/flower2.png" id="21_o7730"]
 [ext_resource type="Texture2D" uid="uid://cagkiki53uy1b" path="res://assets/sprites/flower3.png" id="22_o7730"]
+[ext_resource type="PackedScene" uid="uid://drjksjjp0itc3" path="res://assets/Prefab_kinda/Transition/transition.tscn" id="24_fg80b"]
+[ext_resource type="PackedScene" uid="uid://bv53rdbw0kbkd" path="res://assets/Prefab_kinda/Finish_point/finish_point.tscn" id="24_h54da"]
 [ext_resource type="Texture2D" uid="uid://bugxwog3r3sve" path="res://assets/sprites/black.png" id="24_jnat8"]
+[ext_resource type="Script" uid="uid://bs8aqybvwnltu" path="res://assets/Prefab_kinda/Finish_point/finish_point.gd" id="25_fg80b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ybjcv"]
 size = Vector2(32, 32)
@@ -33,15 +38,8 @@ font_size = 32
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhjv0"]
 size = Vector2(586.5383, 260.97705)
 
-[sub_resource type="Environment" id="Environment_dyvnm"]
-background_mode = 3
-ambient_light_source = 1
-tonemap_mode = 1
-glow_enabled = true
-glow_intensity = 0.16
-glow_bloom = 1.0
-
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
+script = ExtResource("1_icduq")
 
 [node name="Jump" parent="." instance=ExtResource("1_dvjuv")]
 
@@ -49,7 +47,7 @@ glow_bloom = 1.0
 position = Vector2(-233, -283)
 
 [node name="Player" parent="." node_paths=PackedStringArray("Particle_fx") instance=ExtResource("2_ybjcv")]
-position = Vector2(-156, -253)
+position = Vector2(-147, -232)
 Particle_fx = NodePath("../Jump")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -388,9 +386,9 @@ shape = SubResource("RectangleShape2D_ybjcv")
 
 [node name="Block45" type="Node2D" parent="Level_Geom"]
 z_index = 2
-position = Vector2(-3580, 1138.0001)
+position = Vector2(-3580, 1332)
 rotation = 6.2831855
-scale = Vector2(5.1366005, 4.7338552)
+scale = Vector2(5.1366005, 15.733856)
 
 [node name="Sprite2D" type="Sprite2D" parent="Level_Geom/Block45"]
 modulate = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)
@@ -1142,8 +1140,8 @@ offset_left = -197.0
 offset_top = -172.0
 offset_right = 127.0
 offset_bottom = -117.0
-text = "Jump and attach to the wall
-        to wallslide"
+text = "Jump and hold right to 
+       wall slide"
 label_settings = SubResource("LabelSettings_ulum1")
 
 [node name="Arrow" type="Sprite2D" parent="Tutrial/Tutorial4/Label"]
@@ -1310,9 +1308,6 @@ position = Vector2(-4462, 1463)
 [node name="Pollen2" parent="Interractables" instance=ExtResource("11_dyvnm")]
 position = Vector2(-2329, 1880)
 
-[node name="Checkpoint_2" parent="Interractables" instance=ExtResource("10_66ky8")]
-position = Vector2(-55, 1778)
-
 [node name="Checkpoint_3" parent="Interractables" instance=ExtResource("10_66ky8")]
 position = Vector2(-949, 1473)
 
@@ -1320,7 +1315,7 @@ position = Vector2(-949, 1473)
 position = Vector2(-2403, 1866)
 
 [node name="Checkpoint_5" parent="Interractables" instance=ExtResource("10_66ky8")]
-position = Vector2(-3493, 993)
+position = Vector2(-3509, 1014)
 
 [node name="Checkpoint_6" parent="Interractables" instance=ExtResource("10_66ky8")]
 position = Vector2(-1705, 251)
@@ -1328,8 +1323,7 @@ position = Vector2(-1705, 251)
 [node name="Checkpoint_1" parent="Interractables" instance=ExtResource("10_66ky8")]
 position = Vector2(1241, 1778)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_dyvnm")
+[node name="WorldEnvironment" parent="." instance=ExtResource("13_tlxhh")]
 
 [node name="Flower1" type="Sprite2D" parent="."]
 modulate = Color(0.7272795, 0.58444434, 0, 1)
@@ -2856,7 +2850,7 @@ texture = ExtResource("13_880tf")
 
 [node name="Ground170" type="Sprite2D" parent="Node2D"]
 z_index = 3
-position = Vector2(-3510, 1086)
+position = Vector2(-3512, 1109.0001)
 rotation = -3.1415925
 scale = Vector2(1.2502836, 1.15)
 texture = ExtResource("13_880tf")
@@ -3010,14 +3004,14 @@ texture = ExtResource("13_880tf")
 
 [node name="Ground173" type="Sprite2D" parent="Node2D"]
 z_index = 3
-position = Vector2(-3583, 1148)
+position = Vector2(-3585.0002, 1168)
 rotation = 1.5284634
 scale = Vector2(1.2502836, 1.15)
 texture = ExtResource("13_880tf")
 
 [node name="Ground172" type="Sprite2D" parent="Node2D"]
 z_index = 3
-position = Vector2(-3450, 1152)
+position = Vector2(-3449, 1167.9999)
 rotation = -1.6063522
 scale = Vector2(1.2502836, 1.15)
 texture = ExtResource("13_880tf")
@@ -3320,13 +3314,6 @@ z_index = 3
 position = Vector2(-361.8435, 1611.127)
 rotation = 3.1091294
 scale = Vector2(1.2502836, 1.15)
-texture = ExtResource("13_880tf")
-
-[node name="Ground283" type="Sprite2D" parent="Node2D"]
-z_index = 3
-position = Vector2(-365.99997, 1631)
-rotation = 3.279837
-scale = Vector2(0.8656035, 0.7961745)
 texture = ExtResource("13_880tf")
 
 [node name="Ground71" type="Sprite2D" parent="Node2D"]
@@ -5141,17 +5128,9 @@ scale = Vector2(0.18317746, 0.18317746)
 texture = ExtResource("22_o7730")
 flip_h = true
 
-[node name="Flower8" type="Sprite2D" parent="."]
-modulate = Color(0.19595242, 0.57215965, 0.54846525, 1)
-position = Vector2(-3509.0002, 1779)
-rotation = -0.027092442
-scale = Vector2(0.18317746, 0.18317746)
-texture = ExtResource("22_o7730")
-flip_h = true
-
 [node name="Flower7" type="Sprite2D" parent="."]
 modulate = Color(0.308989, 0.79175293, 0.76001126, 1)
-position = Vector2(1515.0001, 1864)
+position = Vector2(1477.0001, 1866)
 rotation = -0.25478804
 scale = Vector2(0.18317746, 0.18317746)
 texture = ExtResource("22_o7730")
@@ -5162,3 +5141,14 @@ flip_h = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("1_ybjcv")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Transition" parent="CanvasLayer2" instance=ExtResource("24_fg80b")]
+
+[node name="Finish_point" parent="." instance=ExtResource("24_h54da")]
+position = Vector2(-3006, -842)
+script = ExtResource("25_fg80b")
+location = "res://Scenes/level2.tscn"
+
+[connection signal="body_entered" from="Finish_point" to="Finish_point" method="_on_body_entered"]

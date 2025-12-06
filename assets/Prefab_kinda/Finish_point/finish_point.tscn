@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv53rdbw0kbkd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlxhh"]
+size = Vector2(213, 225)
+
+[sub_resource type="Curve" id="Curve_tlxhh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Finish_point" type="Area2D"]
+scale = Vector2(0.47145814, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-52, 100)
+shape = SubResource("RectangleShape2D_tlxhh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+self_modulate = Color(0.63632256, 0.33423823, 0.9999226, 1)
+position = Vector2(-12, 208)
+gravity = Vector2(0, -980)
+angle_max = 720.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_tlxhh")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+self_modulate = Color(0.63632256, 0.33423823, 0.9999226, 1)
+position = Vector2(-121, 208)
+gravity = Vector2(0, -980)
+angle_max = 720.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_tlxhh")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+self_modulate = Color(0.63632256, 0.33423823, 0.9999226, 1)
+position = Vector2(-83, 208)
+gravity = Vector2(0, -980)
+angle_max = 720.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_tlxhh")
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="."]
+self_modulate = Color(0.63632256, 0.33423823, 0.9999226, 1)
+position = Vector2(-49, 208)
+gravity = Vector2(0, -980)
+angle_max = 720.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_tlxhh")
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="."]
+self_modulate = Color(0.63632256, 0.33423823, 0.9999226, 1)
+position = Vector2(23, 208)
+gravity = Vector2(0, -980)
+angle_max = 720.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_tlxhh")
+
+[node name="CPUParticles2D6" type="CPUParticles2D" parent="."]
+self_modulate = Color(0.63632256, 0.33423823, 0.9999226, 1)
+position = Vector2(50, 207)
+gravity = Vector2(0, -980)
+angle_max = 720.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_tlxhh")

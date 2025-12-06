@@ -1,17 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://dprho8jmoqejn"]
+[gd_scene load_steps=5 format=3 uid="uid://onk0f8dg7q13"]
 
-[ext_resource type="Script" uid="uid://bhdwfypnqwea1" path="res://assets/player/player_controller.gd" id="1_h6syq"]
-[ext_resource type="Texture2D" uid="uid://d24emgns8mtm2" path="res://assets/sprites/white.png" id="2_v2miy"]
-[ext_resource type="AudioStream" uid="uid://dn3g4x2ok68pq" path="res://assets/audio/jump.wav" id="3_v2miy"]
-[ext_resource type="Script" uid="uid://8owo5ayfyqpu" path="res://assets/player/stamina_bar.gd" id="4_ouxva"]
+[ext_resource type="Script" path="res://assets/player/player_menu.gd" id="1_6v2hd"]
+[ext_resource type="Texture2D" uid="uid://d24emgns8mtm2" path="res://assets/sprites/white.png" id="2_2bo8h"]
+[ext_resource type="AudioStream" uid="uid://dn3g4x2ok68pq" path="res://assets/audio/jump.wav" id="3_dchoh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tmfp"]
 size = Vector2(32, 56)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("feet", "side")]
-script = ExtResource("1_h6syq")
-feet = NodePath("feet")
-side = NodePath("side")
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("antenna1", "antenna2", "cape", "body", "Eye_left", "Eye_right")]
+script = ExtResource("1_6v2hd")
+antenna1 = NodePath("Rotatable/Antena1")
+antenna2 = NodePath("Rotatable/Antena2")
+cape = NodePath("Rotatable/Cape")
+body = NodePath("Rotatable")
+Eye_left = NodePath("Rotatable/Eye1")
+Eye_right = NodePath("Rotatable/Eye2")
 
 [node name="BoundingBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7tmfp")
@@ -27,7 +30,7 @@ position = Vector2(-7, -17)
 modulate = Color(0.9490196, 0, 0.27058825, 1)
 position = Vector2(-10.5, 17)
 scale = Vector2(0.84375006, 1.25)
-texture = ExtResource("2_v2miy")
+texture = ExtResource("2_2bo8h")
 
 [node name="Antena1" type="Node2D" parent="Rotatable"]
 position = Vector2(-7, -25)
@@ -37,14 +40,14 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(-1.000001, -11)
 rotation = -0.22478293
 scale = Vector2(0.16000092, 0.6078811)
-texture = ExtResource("2_v2miy")
+texture = ExtResource("2_2bo8h")
 
 [node name="bob" type="Sprite2D" parent="Rotatable/Antena1"]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(-4.9312773, -18.03883)
 rotation = -0.40934804
 scale = Vector2(0.3038461, 0.25670004)
-texture = ExtResource("2_v2miy")
+texture = ExtResource("2_2bo8h")
 
 [node name="Antena2" type="Node2D" parent="Rotatable"]
 position = Vector2(7, -24)
@@ -54,19 +57,19 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(5.999999, -19.999996)
 rotation = 0.19009504
 scale = Vector2(0.30384612, 0.2567)
-texture = ExtResource("2_v2miy")
+texture = ExtResource("2_2bo8h")
 
 [node name="base" type="Sprite2D" parent="Rotatable/Antena2"]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(2, -12.000004)
 rotation = 0.19530201
 scale = Vector2(0.16000092, 0.6078811)
-texture = ExtResource("2_v2miy")
+texture = ExtResource("2_2bo8h")
 
 [node name="Body" type="Sprite2D" parent="Rotatable"]
 modulate = Color(0, 0, 0, 1)
 scale = Vector2(1, 1.75)
-texture = ExtResource("2_v2miy")
+texture = ExtResource("2_2bo8h")
 
 [node name="Eye1" type="Node2D" parent="Rotatable"]
 position = Vector2(-6, -17)
@@ -75,13 +78,13 @@ position = Vector2(-6, -17)
 modulate = Color(0, 0, 0, 1)
 position = Vector2(16, -1.9073486e-06)
 scale = Vector2(0.44471338, 0.37884316)
-texture = ExtResource("2_v2miy")
+texture = ExtResource("2_2bo8h")
 
 [node name="bal" type="Sprite2D" parent="Rotatable/Eye1"]
 modulate = Color(0.9844983, 0.960059, 0.9895049, 1)
 position = Vector2(16, -1.9073486e-06)
 scale = Vector2(0.3284411, 0.27979296)
-texture = ExtResource("2_v2miy")
+texture = ExtResource("2_2bo8h")
 
 [node name="Eye2" type="Node2D" parent="Rotatable"]
 position = Vector2(10, -17)
@@ -90,7 +93,7 @@ position = Vector2(10, -17)
 modulate = Color(0.9844983, 0.960059, 0.9895049, 1)
 position = Vector2(-15.999999, -1.9073486e-06)
 scale = Vector2(0.3284411, 0.27979296)
-texture = ExtResource("2_v2miy")
+texture = ExtResource("2_2bo8h")
 
 [node name="feet" type="Node2D" parent="Rotatable"]
 position = Vector2(0, 27)
@@ -100,25 +103,7 @@ position = Vector2(16, 26)
 rotation = -1.5707964
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_v2miy")
-
-[node name="StaminaBar" type="Node2D" parent="."]
-z_index = 1
-position = Vector2(0, -68)
-scale = Vector2(1.7200012, 0.28000003)
-script = ExtResource("4_ouxva")
-
-[node name="BarBG" type="Sprite2D" parent="StaminaBar"]
-modulate = Color(0.017732397, 0.01773239, 0.01773239, 1)
-texture = ExtResource("2_v2miy")
-
-[node name="BarFill" type="Node2D" parent="StaminaBar"]
-position = Vector2(-16, 0)
-
-[node name="BarFill" type="Sprite2D" parent="StaminaBar/BarFill"]
-modulate = Color(0.9117393, 0.6679418, 0.18963033, 1)
-position = Vector2(16, 0)
-texture = ExtResource("2_v2miy")
+stream = ExtResource("3_dchoh")
 
 [node name="feet" type="Node2D" parent="."]
 position = Vector2(0, 27)

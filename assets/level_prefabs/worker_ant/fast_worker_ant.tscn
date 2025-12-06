@@ -1,30 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsk1bmbq5bf8x"]
+[gd_scene load_steps=7 format=3 uid="uid://d3kptqg62w5fw"]
 
-[ext_resource type="Texture2D" uid="uid://d24emgns8mtm2" path="res://assets/sprites/white.png" id="1_aewcx"]
-[ext_resource type="Script" uid="uid://dep7hj6hbdb8n" path="res://assets/level_prefabs/worker_ant/worker_ant.gd" id="1_nchg6"]
-[ext_resource type="PackedScene" uid="uid://4sf03s5f00cc" path="res://assets/level_prefabs/spike/killzone.tscn" id="2_5iji7"]
-[ext_resource type="FontFile" uid="uid://de2oe4cfumvi2" path="res://assets/fonts/monogram.ttf" id="4_axdij"]
+[ext_resource type="Script" uid="uid://dep7hj6hbdb8n" path="res://assets/level_prefabs/worker_ant/worker_ant.gd" id="1_ppm65"]
+[ext_resource type="Texture2D" uid="uid://d24emgns8mtm2" path="res://assets/sprites/white.png" id="2_7ysb7"]
+[ext_resource type="FontFile" uid="uid://de2oe4cfumvi2" path="res://assets/fonts/monogram.ttf" id="3_70ubq"]
+[ext_resource type="PackedScene" uid="uid://4sf03s5f00cc" path="res://assets/level_prefabs/spike/killzone.tscn" id="4_vep5s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lv8lt"]
 size = Vector2(82.5, 43)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5peaj"]
-font = ExtResource("4_axdij")
+font = ExtResource("3_70ubq")
 font_size = 64
 
 [node name="Worker_Ant" type="CharacterBody2D"]
-script = ExtResource("1_nchg6")
+script = ExtResource("1_ppm65")
+patrol_speed = 100.0
+chase_speed = 420.0
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 10)
 shape = SubResource("RectangleShape2D_lv8lt")
 
 [node name="GFX" type="Node2D" parent="."]
+modulate = Color(0.8285981, 0.99979967, 0.3814137, 1)
 position = Vector2(1, 0)
 
 [node name="Mid" type="Sprite2D" parent="GFX"]
 modulate = Color(0.53357345, 0.15490595, 0.21340346, 1)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Node2D" type="Node2D" parent="GFX"]
 position = Vector2(40, -1.9999992)
@@ -36,80 +39,80 @@ modulate = Color(0.22829443, 0.057633862, 0.019614724, 1)
 position = Vector2(4.564801, 8.593197)
 rotation = 0.029776672
 scale = Vector2(0.23166133, 0.4831741)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Leg4" type="Sprite2D" parent="GFX/Node2D"]
 modulate = Color(0.22829443, 0.057633862, 0.019614724, 1)
 position = Vector2(5.19732, 17.182552)
 rotation = -0.33677313
 scale = Vector2(0.12813371, 0.27990505)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Head" type="Sprite2D" parent="GFX"]
 modulate = Color(0.7157107, 0.21874803, 0.23103806, 1)
 position = Vector2(25, 1)
 rotation = -0.025774596
 scale = Vector2(1.3282828, 1.3282828)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Head" type="Sprite2D" parent="GFX/Head"]
 position = Vector2(-1.1171589, -15.090836)
 rotation = 0.0014441293
 scale = Vector2(0.7497049, 0.19244008)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Head2" type="Sprite2D" parent="GFX/Head"]
 position = Vector2(0.36455584, 15.071438)
 rotation = 0.0014441293
 scale = Vector2(0.7745358, -0.16480868)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Head3" type="Sprite2D" parent="GFX/Head"]
 position = Vector2(-15.071438, 0.36455584)
 rotation = 1.547105
 scale = Vector2(0.7745358, -0.16480868)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Head4" type="Sprite2D" parent="GFX/Head"]
 position = Vector2(15.052036, 0.3880458)
 rotation = 1.5931185
 scale = Vector2(0.7745358, -0.16480868)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Head5" type="Sprite2D" parent="GFX/Head"]
 modulate = Color(0.29954746, 0.29954746, 0.29954743, 1)
 position = Vector2(-0.09292412, -25.607857)
 rotation = 1.8767296
 scale = Vector2(0.6022894, -0.11631401)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Head6" type="Sprite2D" parent="GFX/Head"]
 modulate = Color(0.29954746, 0.29954746, 0.29954743, 1)
 position = Vector2(8.166292, -24.64183)
 rotation = 2.010723
 scale = Vector2(0.5905588, -0.11619449)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Head7" type="Sprite2D" parent="GFX/Head"]
 modulate = Color(0.29954746, 0.29954746, 0.29954743, 1)
 position = Vector2(12.084519, -30.565641)
 rotation = 2.010723
 scale = Vector2(0.18581969, -0.1748403)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Head8" type="Sprite2D" parent="GFX/Head"]
 modulate = Color(0.29954746, 0.29954746, 0.29954743, 1)
 position = Vector2(3.0921035, -32.303665)
 rotation = 1.9230127
 scale = Vector2(0.18581969, -0.1748403)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Butt" type="Sprite2D" parent="GFX"]
 modulate = Color(0.7526463, 0.228214, 0.27355602, 1)
 position = Vector2(-30.999996, 1.7881393e-07)
 rotation = 0.081748
 scale = Vector2(1.1537454, 1.1537454)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Butt" type="Sprite2D" parent="GFX/Butt"]
 modulate = Color(0.33330378, 0.18865484, 0.17351633, 1)
@@ -117,59 +120,59 @@ z_index = -1
 position = Vector2(-17.50797, -0.85378766)
 rotation = -0.055347458
 scale = Vector2(0.4615784, 0.4615784)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Butt2" type="Sprite2D" parent="GFX/Butt"]
 position = Vector2(-14.033896, -1.4591347)
 rotation = 0.022458196
 scale = Vector2(0.26962748, 0.6800635)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Butt3" type="Sprite2D" parent="GFX/Butt"]
 position = Vector2(-1.132411, -13.821567)
 rotation = 1.6245239
 scale = Vector2(0.26962748, 0.6800635)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Butt4" type="Sprite2D" parent="GFX/Butt"]
 position = Vector2(13.821561, -1.1324091)
 rotation = 3.1852098
 scale = Vector2(0.26962748, 0.6800635)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Butt5" type="Sprite2D" parent="GFX/Butt"]
 position = Vector2(-1.5299143, 13.170045)
 rotation = 4.773581
 scale = Vector2(0.26962748, 0.6800635)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Butt6" type="Sprite2D" parent="GFX/Butt"]
 modulate = Color(0.261625, 0.066971965, 0.0804128, 1)
 position = Vector2(-8.780032, -1.0199401)
 rotation = 0.078424506
 scale = Vector2(0.21305464, 1.1839651)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Butt7" type="Sprite2D" parent="GFX/Butt"]
 modulate = Color(0.261625, 0.066971965, 0.0804128, 1)
 position = Vector2(6.117708, 0.36841896)
 rotation = 0.059420668
 scale = Vector2(-0.1867199, 1.1272937)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Eye" type="Sprite2D" parent="GFX"]
 modulate = Color(0.15814805, 0.054456733, 0.013047206, 1)
 position = Vector2(37.999985, -8.000001)
 rotation = 0.012712612
 scale = Vector2(0.3268602, 0.3268602)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Eye2" type="Sprite2D" parent="GFX"]
 modulate = Color(0.27866375, 0.11513796, 0.04041989, 1)
 position = Vector2(37.999996, -13.000001)
 rotation = -1.4849403
 scale = Vector2(0.044006415, 0.3966754)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Leg1" type="Node2D" parent="GFX"]
 position = Vector2(-39, 14)
@@ -179,7 +182,7 @@ modulate = Color(0.6498697, 0.20702559, 0.25463745, 1)
 position = Vector2(-2, 9)
 rotation = 0.029776663
 scale = Vector2(0.2815362, 0.5040781)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Leg2" type="Node2D" parent="GFX"]
 position = Vector2(25, 17)
@@ -189,9 +192,10 @@ modulate = Color(0.6498697, 0.20702559, 0.25463745, 1)
 position = Vector2(-2, 9)
 rotation = 0.029776663
 scale = Vector2(0.2815362, 0.5040781)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="ExclaimSign" type="Label" parent="GFX"]
+modulate = Color(0.84004265, 0.80581856, 0.9949817, 1)
 texture_filter = 1
 offset_left = 44.0
 offset_top = -80.0
@@ -210,19 +214,19 @@ modulate = Color(0.22829443, 0.057633862, 0.019614724, 1)
 position = Vector2(-2.7876863, 8.641926)
 rotation = 0.029776663
 scale = Vector2(0.23166132, 0.48317406)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="Leg2" type="Sprite2D" parent="GFX/Mouth"]
 modulate = Color(0.22829443, 0.057633862, 0.019614724, 1)
 position = Vector2(-2.3787782, 15.044649)
 rotation = -0.2424502
 scale = Vector2(0.13277496, 0.36298567)
-texture = ExtResource("1_aewcx")
+texture = ExtResource("2_7ysb7")
 
 [node name="LookRay" type="RayCast2D" parent="GFX"]
 target_position = Vector2(300, 0)
 
-[node name="Killzone" parent="." instance=ExtResource("2_5iji7")]
+[node name="Killzone" parent="." instance=ExtResource("4_vep5s")]
 visible = false
 position = Vector2(-2, 0.99999994)
 scale = Vector2(0.5923586, 1.6848073)
