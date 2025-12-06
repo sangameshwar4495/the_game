@@ -15,12 +15,12 @@ const JUMP_VELOCITY = -690.0
 const MIN_JUMP_VELOCITY = -500.0
 
 const WALL_JUMP_VELOCITY = -720.0
-const WALL_JUMP_PUSH = 270.0
+const WALL_JUMP_PUSH = 370.0
 const WALL_JUMP_CONTROL_LOCK = 0.10
 
 const COYOTE_TIME = 0.11
 const JUMP_BUFFER_TIME = 0.10
-const WALL_COYOTE_TIME = 0.11
+const WALL_COYOTE_TIME = 0.3
 
 @onready var rotatable = $Rotatable
 @onready var antenna1 = $Rotatable/Antena1
@@ -178,12 +178,17 @@ func get_input_axis():
 func check_wall():
 	on_wall = false
 	wall_dir = 0
+
 	if not is_on_floor() and is_on_wall_only():
 		var col = get_last_slide_collision()
 		if col:
 			wall_dir = int(sign(col.get_normal().x))
-			last_wall_dir = wall_dir
-			on_wall = true
+
+			# Only stick if input is towards wall!
+			if axis.x != 0 and axis.x == -wall_dir:
+				on_wall = true
+				last_wall_dir = wall_dir
+
 
 func apply_gravity(delta):
 	if vel.y < 0:
@@ -236,8 +241,9 @@ func handle_jump_input(delta):
 			jump_buffer_timer = 0.0
 
 func handle_wall_slide():
-	if on_wall and vel.y > 0:
+	if on_wall and vel.y > 0 and axis.x == -wall_dir:
 		vel.y = min(vel.y, MAX_FALL_SPEED * 0.25)
+
 
 func apply_variable_jump(delta):
 	if not Input.is_action_pressed("jump") and vel.y < 0:
@@ -306,9 +312,9 @@ func do_wall_jump():
 	var p = WALL_JUMP_PUSH
 
 	if d != 0 and d == -wall_dir:
-		p *= 1.45
+		p *= 1.65
 	else:
-		p *= 3.0
+		p *= 2.3
 
 	vel.y = WALL_JUMP_VELOCITY
 	vel.x = wall_dir * p
@@ -498,3 +504,4 @@ func die() -> void:
 
 	await get_tree().create_timer(0.35).timeout 
 	respawn()
+	

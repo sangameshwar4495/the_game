@@ -2479,7 +2479,8 @@ position = Vector2(-1740, -1607)
 position = Vector2(66, -2996)
 
 [node name="Checkpoint6" parent="level_geom" instance=ExtResource("13_ukdoj")]
-position = Vector2(-273, -3769)
+z_index = -5
+position = Vector2(-248, -3768)
 
 [node name="Checkpoint7" parent="level_geom" instance=ExtResource("13_ukdoj")]
 position = Vector2(-1897, -4645)

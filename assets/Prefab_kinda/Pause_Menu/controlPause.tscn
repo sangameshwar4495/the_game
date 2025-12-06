@@ -5,56 +5,51 @@
 
 [sub_resource type="GDScript" id="GDScript_emidj"]
 script/source = "extends Control
-
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var resume_: TextureButton = $CanvasLayer/VBoxContainer/Resume
-@export var player: Node2D
+#@export var PauseMenu: CanvasLayer
 
 func resume():
-	if canvas_layer:
-		canvas_layer.visible = false
-	if get_tree():
-		get_tree().paused = false
-
+	canvas_layer.visible = false
+	get_tree().paused = false
 func pause():
-	if canvas_layer:
-		canvas_layer.visible = true
-	if get_tree():
-		get_tree().paused = true
+	canvas_layer.visible = true
+	get_tree().paused = true
 
 func test_esc():
-	if not get_tree() or get_tree().current_scene == null:
-		return
 	if Input.is_action_just_pressed(\"Pause\"):
 		if get_tree().paused:
 			resume()
 		else:
 			pause()
 			await get_tree().process_frame
-			if resume_:
-				resume_.grab_focus()
+			resume_.grab_focus()
+			
+
 
 func _on_resume_button_down() -> void:
 	resume()
 
 func _on_quit_menu_button_down() -> void:
-	resume()
-	if get_tree():
-		get_tree().change_scene_to_file(\"res://Scenes/main_menu.tscn\")
+	resume() 
+	get_tree().change_scene_to_file(\"res://Scenes/main_menu.tscn\")
 
 func _on_quit_game_button_down() -> void:
-	if get_tree():
-		get_tree().quit()
+	get_tree().quit()
+	
 
 func _on_restart_button_down() -> void:
 	resume()
-	if get_tree():
-		get_tree().reload_current_scene()
+	get_tree().reload_current_scene()
 
+@export var player:Node2D
 func _on_restart_check_button_down() -> void:
-	#if player: #and player.has_method(\"respawn\"):
 	player.respawn()
 	resume()
+
+func _ready():
+	if player == null:
+		player = get_tree().get_first_node_in_group(\"player\")
 
 func _process(delta: float) -> void:
 	test_esc()
@@ -62,8 +57,8 @@ func _process(delta: float) -> void:
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eh8hr"]
 shader = ExtResource("1_eh8hr")
-shader_parameter/intensity = 0.4550000216125
-shader_parameter/smoothness = 1.4830000704425
+shader_parameter/intensity = 0.6310000299725
+shader_parameter/smoothness = 2.0
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
 [node name="Pause_Menu" type="Control"]
@@ -86,7 +81,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -115,17 +109,17 @@ arrow_margin_from_center = 71
 
 [node name="Restart_check" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_mlor7")]
 layout_mode = 2
-text = "load last checkpoint"
-arrow_margin_from_center = 153
+text = "Last Checkpoint"
+arrow_margin_from_center = 130
 
 [node name="Quit_Menu" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_mlor7")]
 layout_mode = 2
-text = "QUIT TO MAIN MENU"
+text = "Quit to Main Menu"
 arrow_margin_from_center = 140
 
 [node name="Quit_Game" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_mlor7")]
 layout_mode = 2
-text = "QUIT GAME"
+text = "Quit Game"
 arrow_margin_from_center = 85
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
@@ -135,7 +129,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
